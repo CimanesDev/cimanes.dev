@@ -111,30 +111,30 @@ export function ProjectsSection() {
   return (
     <section id="projects" className="section-container">
       <div className="section-content">
-        <div className="text-left mb-6">
-          <h2 className="text-3xl md:text-4xl font-bold mb-3">Projects</h2>
+        <div className="text-left mb-4">
+          <h2 className="text-2xl md:text-3xl font-bold mb-2">Projects</h2>
         </div>
 
-        {/* Featured Project - Large Showcase */}
-        <div className="mb-16">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        {/* Featured Project - Compact Showcase */}
+        <div className="mb-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 items-center">
             {/* Left: Project Mockup/Showcase */}
             <div className="order-2 lg:order-1">
-              <div className="bg-gradient-to-br from-white/10 via-white/5 to-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-6 shadow-2xl">
+              <div className="bg-gradient-to-br from-white/10 via-white/5 to-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-3 shadow-2xl">
                 {/* Browser-like header */}
-                <div className="flex items-center gap-2 mb-4 pb-4 border-b border-white/10">
-                  <div className="flex gap-2">
-                    <div className="w-3 h-3 rounded-full bg-red-400"></div>
-                    <div className="w-3 h-3 rounded-full bg-yellow-400"></div>
-                    <div className="w-3 h-3 rounded-full bg-green-400"></div>
+                <div className="flex items-center gap-2 mb-2 pb-2 border-b border-white/10">
+                  <div className="flex gap-1">
+                    <div className="w-2 h-2 rounded-full bg-red-400"></div>
+                    <div className="w-2 h-2 rounded-full bg-yellow-400"></div>
+                    <div className="w-2 h-2 rounded-full bg-green-400"></div>
                   </div>
-                  <div className="flex-1 bg-white/5 rounded-lg px-3 py-1 text-sm text-foreground/60">
+                  <div className="flex-1 bg-white/5 rounded-lg px-2 py-1 text-xs text-foreground/60">
                     {projects[0].demo}
                   </div>
                 </div>
                 
                 {/* Project content area */}
-                <div className="bg-gradient-to-br from-primary/5 to-primary/10 rounded-xl p-4 min-h-[400px] overflow-hidden">
+                <div className="bg-gradient-to-br from-primary/5 to-primary/10 rounded-xl p-2 min-h-[100px] overflow-hidden">
                   <img 
                     src={projects[0].image} 
                     alt={`${projects[0].title} screenshot`}
@@ -146,39 +146,39 @@ export function ProjectsSection() {
 
             {/* Right: Project Details */}
             <div className="order-1 lg:order-2">
-              <div className="space-y-6">
+              <div className="space-y-3">
                 <div>
-                  <h3 className="text-4xl font-bold mb-4 bg-gradient-to-r from-foreground to-foreground/80 bg-clip-text text-transparent">
+                  <h3 className="text-2xl font-bold mb-2 bg-gradient-to-r from-foreground to-foreground/80 bg-clip-text text-transparent">
                     {projects[0].title}
                   </h3>
-                  <p className="text-lg text-foreground/90 leading-relaxed">
+                  <p className="text-base text-foreground/90 leading-relaxed">
                     {projects[0].description}
                   </p>
                 </div>
 
-                <div className="flex gap-4">
+                <div className="flex gap-2">
                   <a
                     href={projects[0].demo}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="px-6 py-3 bg-gradient-to-r from-primary to-primary/80 text-white rounded-xl font-semibold hover:from-primary/90 hover:to-primary/70 transition-all duration-300 inline-flex items-center gap-2"
+                    className="px-4 py-2 bg-gradient-to-r from-primary to-primary/80 text-white rounded-lg font-medium hover:from-primary/90 hover:to-primary/70 transition-all duration-300 inline-flex items-center gap-2"
                   >
-                    <ExternalLink size={20} />
+                    <ExternalLink size={16} />
                     Live Demo
                   </a>
                 </div>
 
-                <div className="pt-6">
-                  <div className="flex items-center gap-4 mb-4">
+                <div className="pt-3">
+                  <div className="flex items-center gap-2 mb-2">
                     <div className="h-px bg-gradient-to-r from-transparent via-white/20 to-transparent flex-1"></div>
-                    <span className="text-sm text-foreground/60 font-medium uppercase tracking-wider">Technologies Used</span>
+                    <span className="text-xs text-foreground/60 font-medium uppercase tracking-wider">Technologies Used</span>
                     <div className="h-px bg-gradient-to-r from-transparent via-white/20 to-transparent flex-1"></div>
                   </div>
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-1">
                     {projects[0].tech.map((tech) => (
                       <span 
                         key={tech}
-                        className="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium"
+                        className="px-2 py-1 bg-primary/10 text-primary rounded-full text-xs font-medium"
                       >
                         {tech}
                       </span>
@@ -193,7 +193,7 @@ export function ProjectsSection() {
         {/* Other Projects - Paginated Grid */}
         <div className="relative">
           {/* Projects Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {projects.slice(1).slice(currentPage * projectsPerPage, (currentPage + 1) * projectsPerPage).map((project, index) => {
               const isExpanded = expandedProject === project.title;
               const hasDemo = project.demo && project.demo !== "https://demo.com";
@@ -276,7 +276,7 @@ export function ProjectsSection() {
           </div>
 
           {/* Navigation Arrows */}
-          <div className="flex justify-center items-center mt-8">
+          <div className="flex justify-center items-center mt-6">
             <div className="flex items-center gap-4 bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-2">
               <button
                 onClick={() => setCurrentPage(Math.max(0, currentPage - 1))}

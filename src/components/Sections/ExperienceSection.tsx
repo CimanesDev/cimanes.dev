@@ -43,7 +43,7 @@ export function ExperienceSection() {
     },
     {
       title: "Chief Technology Officer / CTO",
-      company: "Google Developer Groups on CampusUP Manila",
+      company: "Google Developer Groups on Campus UP Manila",
       location: "Manila, Philippines",
       period: "September 2025 - 2026",
       description: "Role and initiatives to be announced soon.",
@@ -74,33 +74,33 @@ export function ExperienceSection() {
   return (
     <section id="experience" className="section-container">
       <div className="section-content">
-        <div className="text-left mb-6">
-          <h2 className="text-3xl md:text-4xl font-bold mb-3">Experience</h2>
+        <div className="text-left mb-4">
+          <h2 className="text-2xl md:text-3xl font-bold mb-2">Experience</h2>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
           {experiences.map((exp, index) => {
             const Icon = getTypeIcon(exp.type);
             return (
               <div 
                 key={index}
-                className="bg-gradient-to-br from-white/10 via-white/5 to-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-8 shadow-2xl hover:shadow-3xl transition-all duration-300 hover:border-white/30"
+                className="bg-gradient-to-br from-white/10 via-white/5 to-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-6 shadow-2xl hover:shadow-3xl transition-all duration-300 hover:border-white/30"
               >
-                <div className="flex items-start gap-6 h-full">
-                  <div className="p-4 bg-gradient-to-br from-primary/20 to-primary/10 rounded-xl shadow-lg">
-                    <Icon className="text-primary" size={28} />
+                <div className="flex items-start gap-4 h-full">
+                  <div className="p-3 bg-gradient-to-br from-primary/20 to-primary/10 rounded-xl shadow-lg">
+                    <Icon className="text-primary" size={24} />
                   </div>
                   <div className="flex-1">
-                    <h4 className="text-2xl font-bold mb-3 bg-gradient-to-r from-foreground to-foreground/80 bg-clip-text text-transparent">{exp.title}</h4>
-                    <p className="text-primary font-semibold mb-3 text-xl">{exp.company}</p>
-                    <p className="text-muted-foreground mb-4 font-medium text-lg">{exp.location} • {exp.period}</p>
-                    <div className="space-y-3">
-                      <p className="text-lg text-foreground/90 font-medium">{exp.description}</p>
+                    <h4 className="text-xl font-bold mb-2 bg-gradient-to-r from-foreground to-foreground/80 bg-clip-text text-transparent">{exp.title}</h4>
+                    <p className="text-primary font-semibold mb-2 text-lg">{exp.company}</p>
+                    <p className="text-muted-foreground mb-3 font-medium text-base">{exp.location} • {exp.period}</p>
+                    <div className="space-y-2">
+                      <p className="text-base text-foreground/90 font-medium">{exp.description}</p>
                       <div className="flex flex-wrap gap-2">
                         {exp.skills.map((skill) => (
                           <span 
                             key={skill}
-                            className="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium"
+                            className="px-2 py-1 bg-primary/10 text-primary rounded-full text-xs font-medium"
                           >
                             {skill}
                           </span>
@@ -115,35 +115,35 @@ export function ExperienceSection() {
         </div>
 
         {/* Organizations Subsection */}
-        <div className="mt-12">
-          <div className="text-left mb-6">
-            <h3 className="text-2xl md:text-3xl font-bold mb-3">Organizations</h3>
+        <div className="mt-8">
+          <div className="text-left mb-4">
+            <h3 className="text-xl md:text-2xl font-bold mb-2">Organizations</h3>
           </div>
           
           {/* Top row - VP for Projects and Project Head */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4">
             {organizations.filter(org => !org.isFullWidth).map((org, index) => {
               const Icon = getOrgIcon(org.company);
               return (
                 <div 
                   key={index}
-                  className="bg-gradient-to-br from-white/10 via-white/5 to-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-8 shadow-2xl hover:shadow-3xl transition-all duration-300 hover:border-white/30"
+                  className="bg-gradient-to-br from-white/10 via-white/5 to-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-6 shadow-2xl hover:shadow-3xl transition-all duration-300 hover:border-white/30"
                 >
-                  <div className="flex items-start gap-6 h-full">
-                    <div className="p-4 bg-gradient-to-br from-primary/20 to-primary/10 rounded-xl shadow-lg">
-                      <Icon className="text-primary" size={28} />
+                  <div className="flex items-start gap-4 h-full">
+                    <div className="p-3 bg-gradient-to-br from-primary/20 to-primary/10 rounded-xl shadow-lg">
+                      <Icon className="text-primary" size={24} />
                     </div>
                     <div className="flex-1">
-                      <h4 className="text-2xl font-bold mb-3 bg-gradient-to-r from-foreground to-foreground/80 bg-clip-text text-transparent">{org.title}</h4>
-                      <p className="text-primary font-semibold mb-3 text-xl">{org.company}</p>
-                      <p className="text-muted-foreground mb-4 font-medium text-lg">{org.location} • {org.period}</p>
-                      <div className="space-y-3">
-                        <p className="text-lg text-foreground/90 font-medium">{org.description}</p>
+                      <h4 className="text-xl font-bold mb-2 bg-gradient-to-r from-foreground to-foreground/80 bg-clip-text text-transparent">{org.title}</h4>
+                      <p className="text-primary font-semibold mb-2 text-lg">{org.company}</p>
+                      <p className="text-muted-foreground mb-3 font-medium text-base">{org.location} • {org.period}</p>
+                      <div className="space-y-2">
+                        <p className="text-base text-foreground/90 font-medium">{org.description}</p>
                         <div className="flex flex-wrap gap-2">
                           {org.skills.map((skill) => (
                             <span 
                               key={skill}
-                              className="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium"
+                              className="px-2 py-1 bg-primary/10 text-primary rounded-full text-xs font-medium"
                             >
                               {skill}
                             </span>
@@ -163,23 +163,23 @@ export function ExperienceSection() {
             return (
               <div 
                 key={index}
-                className="bg-gradient-to-br from-white/10 via-white/5 to-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-8 shadow-2xl hover:shadow-3xl transition-all duration-300 hover:border-white/30"
+                className="bg-gradient-to-br from-white/10 via-white/5 to-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-6 shadow-2xl hover:shadow-3xl transition-all duration-300 hover:border-white/30"
               >
-                <div className="flex items-start gap-6 h-full">
-                  <div className="p-4 bg-gradient-to-br from-primary/20 to-primary/10 rounded-xl shadow-lg">
-                    <Icon className="text-primary" size={28} />
+                <div className="flex items-start gap-4 h-full">
+                  <div className="p-3 bg-gradient-to-br from-primary/20 to-primary/10 rounded-xl shadow-lg">
+                    <Icon className="text-primary" size={24} />
                   </div>
                   <div className="flex-1">
-                    <h4 className="text-2xl font-bold mb-3 bg-gradient-to-r from-foreground to-foreground/80 bg-clip-text text-transparent">{org.title}</h4>
-                    <p className="text-primary font-semibold mb-3 text-xl">{org.company}</p>
-                    <p className="text-muted-foreground mb-4 font-medium text-lg">{org.location} • {org.period}</p>
-                    <div className="space-y-3">
-                      <p className="text-lg text-foreground/90 font-medium">{org.description}</p>
+                    <h4 className="text-xl font-bold mb-2 bg-gradient-to-r from-foreground to-foreground/80 bg-clip-text text-transparent">{org.title}</h4>
+                    <p className="text-primary font-semibold mb-2 text-lg">{org.company}</p>
+                    <p className="text-muted-foreground mb-3 font-medium text-base">{org.location} • {org.period}</p>
+                    <div className="space-y-2">
+                      <p className="text-base text-foreground/90 font-medium">{org.description}</p>
                       <div className="flex flex-wrap gap-2">
                         {org.skills.map((skill) => (
                           <span 
                             key={skill}
-                            className="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium"
+                            className="px-2 py-1 bg-primary/10 text-primary rounded-full text-xs font-medium"
                           >
                             {skill}
                           </span>

@@ -54,21 +54,18 @@ export function ContactSection() {
   return (
     <section id="contact" className="section-container">
       <div className="section-content">
-        <div className="text-left mb-16">
-          <h2 className="text-5xl md:text-6xl font-bold mb-6">Get In Touch</h2>
-          <p className="text-xl text-muted-foreground max-w-3xl">
-            Ready to collaborate on your next project? Let's create something amazing together!
-          </p>
+        <div className="text-left mb-4">
+          <h2 className="text-2xl md:text-3xl font-bold mb-2">Get In Touch</h2>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
           {/* Contact Form */}
           <div className="animate-fade-in">
-            <div className="bg-card border border-border rounded-xl p-8">
-              <h3 className="text-2xl font-bold mb-6">Send me a message</h3>
+            <div className="bg-gradient-to-br from-white/10 via-white/5 to-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-6 shadow-2xl hover:shadow-3xl transition-all duration-300 hover:border-white/30">
+              <h3 className="text-xl font-bold mb-4">Send me a message</h3>
               
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium mb-2">
                       Name
@@ -141,26 +138,26 @@ export function ContactSection() {
 
           {/* Contact Info */}
           <div className="animate-fade-in" style={{ animationDelay: '0.2s' }}>
-            <div className="space-y-8">
-              <div>
-                <h3 className="text-2xl font-bold mb-6">Contact Information</h3>
-                <div className="space-y-4">
+            <div className="space-y-4">
+              <div className="bg-gradient-to-br from-white/10 via-white/5 to-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-6 shadow-2xl hover:shadow-3xl transition-all duration-300 hover:border-white/30">
+                <h3 className="text-xl font-bold mb-4">Contact Information</h3>
+                <div className="space-y-3">
                   {contactInfo.map(({ icon: Icon, label, value, href }) => (
-                    <div key={label} className="flex items-center gap-4">
-                      <div className="p-3 bg-primary/10 rounded-lg">
+                    <div key={label} className="flex items-center gap-3">
+                      <div className="p-3 bg-gradient-to-br from-primary/20 to-primary/10 rounded-xl shadow-lg">
                         <Icon className="text-primary" size={20} />
                       </div>
                       <div>
-                        <p className="font-medium">{label}</p>
+                        <p className="font-medium text-foreground">{label}</p>
                         {href ? (
                           <a 
                             href={href}
-                            className="text-muted-foreground hover:text-primary transition-colors"
+                            className="text-foreground/70 hover:text-primary transition-colors"
                           >
                             {value}
                           </a>
                         ) : (
-                          <p className="text-muted-foreground">{value}</p>
+                          <p className="text-foreground/70">{value}</p>
                         )}
                       </div>
                     </div>
@@ -168,8 +165,8 @@ export function ContactSection() {
                 </div>
               </div>
 
-              <div>
-                <h4 className="text-lg font-semibold mb-4">Follow me</h4>
+              <div className="bg-gradient-to-br from-white/10 via-white/5 to-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-6 shadow-2xl hover:shadow-3xl transition-all duration-300 hover:border-white/30">
+                <h4 className="text-lg font-semibold mb-4 text-foreground">Follow me</h4>
                 <div className="flex gap-4">
                   {socialLinks.map(({ icon: Icon, href, label }) => (
                     <a
@@ -186,11 +183,11 @@ export function ContactSection() {
                 </div>
               </div>
 
-              <div className="bg-card border border-border rounded-xl p-6">
+              <div className="bg-gradient-to-br from-white/10 via-white/5 to-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-6 shadow-2xl hover:shadow-3xl transition-all duration-300 hover:border-white/30">
                 <div className="text-center">
                   <div className="text-3xl mb-4">☕</div>
-                  <h4 className="font-semibold mb-2">Let's grab coffee!</h4>
-                  <p className="text-sm text-muted-foreground">
+                  <h4 className="font-semibold mb-2 text-foreground">Let's grab coffee!</h4>
+                  <p className="text-sm text-foreground/70">
                     I'm always excited to discuss new opportunities and interesting projects over a good cup of coffee.
                   </p>
                 </div>
