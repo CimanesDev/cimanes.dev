@@ -28,7 +28,7 @@ export function Portfolio() {
       <footer className="border-t border-border py-8">
         <div className="max-w-6xl mx-auto px-6 text-center">
           <p className="text-muted-foreground">
-            © 2024 Josh Cimanes. Built with React and Tailwind CSS.
+            © 2025 Josh Cimanes. All rights reserved.
           </p>
         </div>
       </footer>

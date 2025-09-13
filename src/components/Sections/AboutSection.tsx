@@ -42,7 +42,7 @@ export function AboutSection() {
               I specialize in frontend development with React, TypeScript, and modern web technologies, with a solid foundation in backend development. I'm currently exploring AI to integrate intelligent systems into web apps for more impactful, user-friendly solutions, and I'm passionate about mentoring and contributing to the tech community.
               </p>
             </div>
-            <div className="bg-gradient-to-br from-white/10 via-white/5 to-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-4 shadow-2xl flex-1 mt-2 hover:shadow-3xl transition-all duration-300 hover:border-white/30">
+            <div className="bg-gradient-to-br from-white/10 via-white/5 to-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-4 shadow-2xl flex-1 mt-2 hover:shadow-3xl transition-all duration-300 hover:border-white/30 hover:-translate-y-1 animate-fade-in">
               <div className="flex items-start gap-4 h-full">
                 <div className="p-3 bg-gradient-to-br from-primary/20 to-primary/10 rounded-xl shadow-lg">
                   <Languages className="text-primary" size={24} />
@@ -62,7 +62,7 @@ export function AboutSection() {
           {/* Right side - Education */}
           <div className="space-y-4">
             
-            <div className="bg-gradient-to-br from-white/10 via-white/5 to-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-4 shadow-2xl hover:shadow-3xl transition-all duration-300 hover:border-white/30">
+            <div className="bg-gradient-to-br from-white/10 via-white/5 to-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-4 shadow-2xl hover:shadow-3xl transition-all duration-300 hover:border-white/30 hover:-translate-y-1 animate-fade-in">
               <div className="flex items-start gap-4">
                 <div className="p-3 bg-gradient-to-br from-primary/20 to-primary/10 rounded-xl shadow-lg">
                   <GraduationCap className="text-primary" size={24} />
@@ -81,15 +81,15 @@ export function AboutSection() {
               </div>
             </div>
 
-            <div className="bg-gradient-to-br from-white/10 via-white/5 to-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-5 shadow-2xl hover:shadow-3xl transition-all duration-300 hover:border-white/30">
-              <div className="flex items-start gap-6">
-                <div className="p-4 bg-gradient-to-br from-primary/20 to-primary/10 rounded-xl shadow-lg">
-                  <GraduationCap className="text-primary" size={28} />
+            <div className="bg-gradient-to-br from-white/10 via-white/5 to-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-4 shadow-2xl hover:shadow-3xl transition-all duration-300 hover:border-white/30 hover:-translate-y-1 animate-fade-in">
+              <div className="flex items-start gap-4">
+                <div className="p-3 bg-gradient-to-br from-primary/20 to-primary/10 rounded-xl shadow-lg">
+                  <GraduationCap className="text-primary" size={24} />
                 </div>
                 <div className="flex-1">
-                  <h4 className="text-xl font-bold mb-2 bg-gradient-to-r from-foreground to-foreground/80 bg-clip-text text-transparent">Chiang Kai Shek College</h4>
-                  <p className="text-primary font-semibold mb-2 text-lg">High School Diploma (2008-2023)</p>
-                  <p className="text-muted-foreground mb-4 font-medium">Manila, Philippines</p>
+                  <h4 className="text-lg font-bold mb-2 bg-gradient-to-r from-foreground to-foreground/80 bg-clip-text text-transparent">Chiang Kai Shek College</h4>
+                  <p className="text-primary font-semibold mb-2 text-base">High School Diploma (2008-2023)</p>
+                  <p className="text-muted-foreground mb-3 font-medium">Manila, Philippines</p>
                   <div className="space-y-3">
                     <p className="text-base text-foreground/90 font-medium">• With High Honors</p>
                     <p className="text-base text-foreground/90 font-medium">• Track and Field Varsity</p>

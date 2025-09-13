@@ -2,8 +2,8 @@ import { Github, Linkedin, Download, Mail, Sun, Moon } from 'lucide-react';
 import { useState } from 'react';
 
 const socialLinks = [
-  { icon: Github, href: 'https://github.com', label: 'GitHub' },
-  { icon: Linkedin, href: 'https://linkedin.com', label: 'LinkedIn' },
+  { icon: Github, href: 'https://github.com/cimanesdev', label: 'GitHub' },
+  { icon: Linkedin, href: 'https://linkedin.com/in/cimanesdev', label: 'LinkedIn' },
   { icon: Download, href: '/cv.pdf', label: 'Download CV', download: true },
   { icon: Mail, href: 'mailto:jmcimanes@up.edu.ph', label: 'Email' },
 ];

@@ -16,13 +16,23 @@ export function StickyNavigation() {
   useEffect(() => {
     const handleScroll = () => {
       const sections = navigationItems.map(item => item.id);
-      const currentSection = sections.find(section => {
+      let currentSection = null;
+      let minDistance = Infinity;
+      
+      sections.forEach(section => {
         const element = document.getElementById(section);
         if (element) {
           const rect = element.getBoundingClientRect();
-          return rect.top <= 100 && rect.bottom >= 100;
+          const viewportCenter = window.innerHeight / 2;
+          const sectionCenter = rect.top + rect.height / 2;
+          const distance = Math.abs(sectionCenter - viewportCenter);
+          
+          // Only consider sections that are at least partially visible
+          if (rect.top < window.innerHeight && rect.bottom > 0 && distance < minDistance) {
+            minDistance = distance;
+            currentSection = section;
+          }
         }
-        return false;
       });
       
       if (currentSection) {

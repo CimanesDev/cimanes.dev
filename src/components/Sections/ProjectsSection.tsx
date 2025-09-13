@@ -120,7 +120,7 @@ export function ProjectsSection() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 items-center">
             {/* Left: Project Mockup/Showcase */}
             <div className="order-2 lg:order-1">
-              <div className="bg-gradient-to-br from-white/10 via-white/5 to-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-3 shadow-2xl">
+              <div className="bg-gradient-to-br from-white/10 via-white/5 to-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-3 shadow-2xl hover:shadow-3xl transition-all duration-300 hover:border-white/30 hover:-translate-y-1 animate-fade-in">
                 {/* Browser-like header */}
                 <div className="flex items-center gap-2 mb-2 pb-2 border-b border-white/10">
                   <div className="flex gap-1">
@@ -202,7 +202,8 @@ export function ProjectsSection() {
               return (
                 <div 
                   key={project.title}
-                  className="group bg-gradient-to-br from-white/5 via-white/5 to-white/10 backdrop-blur-xl border border-white/10 rounded-xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 hover:border-white/20 hover:-translate-y-1 cursor-pointer"
+                  className="group bg-gradient-to-br from-white/5 via-white/5 to-white/10 backdrop-blur-xl border border-white/10 rounded-xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 hover:border-white/20 hover:-translate-y-1 cursor-pointer animate-fade-in"
+                  style={{ animationDelay: `${index * 0.1}s` }}
                   onClick={() => setExpandedProject(isExpanded ? null : project.title)}
                 >
                   {/* Project Image */}
