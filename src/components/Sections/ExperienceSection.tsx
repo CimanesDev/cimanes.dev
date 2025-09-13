@@ -12,7 +12,7 @@ export function ExperienceSection() {
       type: "leadership"
     },
     {
-      title: "Web/App Developer",
+      title: "Web/App Developer Intern",
       company: "Wisdom IPVault",
       location: "Philippines", 
       period: "September 2025 - Present",
