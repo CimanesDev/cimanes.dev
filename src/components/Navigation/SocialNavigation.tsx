@@ -18,7 +18,7 @@ export function SocialNavigation() {
 
   return (
     <nav className="fixed right-8 top-1/2 -translate-y-1/2 z-50 hidden lg:block">
-      <div className="bg-nav-background/80 backdrop-blur-lg border border-border rounded-full p-4 glow-border">
+      <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-full p-4 shadow-2xl" style={{ boxShadow: '0 0 0 1px hsl(var(--border)), 0 0 10px hsl(var(--glow-color) / 0.2), 0 0 20px hsl(var(--glow-color) / 0.1)' }}>
         <div className="flex flex-col items-center gap-4">
           {socialLinks.map(({ icon: Icon, href, label, download }) => (
             <a
@@ -65,7 +65,7 @@ export function MobileSocialNavigation() {
 
   return (
     <nav className="fixed top-4 left-1/2 -translate-x-1/2 z-50 lg:hidden">
-      <div className="bg-nav-background/80 backdrop-blur-lg border border-border rounded-full px-4 py-2 glow-border">
+      <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-full px-4 py-2 shadow-2xl" style={{ boxShadow: '0 0 0 1px hsl(var(--border)), 0 0 10px hsl(var(--glow-color) / 0.2), 0 0 20px hsl(var(--glow-color) / 0.1)' }}>
         <div className="flex items-center gap-3">
           {socialLinks.map(({ icon: Icon, href, label, download }) => (
             <a
