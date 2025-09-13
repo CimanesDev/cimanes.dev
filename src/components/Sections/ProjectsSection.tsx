@@ -78,9 +78,9 @@ export function ProjectsSection() {
   return (
     <section id="projects" className="section-container">
       <div className="section-content">
-        <div className="text-center mb-16">
+        <div className="text-left mb-16">
           <h2 className="text-5xl md:text-6xl font-bold mb-6">Projects</h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-xl text-muted-foreground max-w-3xl">
             A showcase of my latest work in web development and AI
           </p>
         </div>

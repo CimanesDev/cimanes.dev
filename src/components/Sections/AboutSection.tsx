@@ -1,4 +1,4 @@
-import { GraduationCap, Code, Trophy, Heart } from 'lucide-react';
+import { GraduationCap, Code, Trophy, Heart, Languages } from 'lucide-react';
 
 export function AboutSection() {
   const highlights = [
@@ -27,45 +27,83 @@ export function AboutSection() {
   return (
     <section id="about" className="section-container">
       <div className="section-content">
-        <div className="text-center mb-16">
-          <h2 className="text-5xl md:text-6xl font-bold mb-6">About Me</h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            I'm Josh Bradley Cimanes, a passionate computer science student at the University of the Philippines Manila. 
-            As a College Scholar and multiple hackathon champion, I specialize in full-stack development with React, 
-            TypeScript, and modern web technologies. I'm also actively involved in leadership roles as CTO of 
-            Google Developer Groups UP Manila and VP for Projects at UP Society of Computer Scientists.
-          </p>
+        <div className="text-left mb-6">
+          <h2 className="text-3xl md:text-4xl font-bold mb-3">About Me</h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {highlights.map(({ icon: Icon, title, description }, index) => (
-            <div 
-              key={title}
-              className="experience-card group"
-              style={{ animationDelay: `${index * 0.1}s` }}
-            >
-              <div className="flex items-start gap-4">
-                <div className="p-3 bg-primary/10 rounded-lg group-hover:bg-primary/20 transition-colors duration-300">
-                  <Icon className="text-primary" size={24} />
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          {/* Left side - Description */}
+          <div className="flex flex-col h-full">
+            <div className="space-y-3 flex-shrink-0">
+              <p className="text-xl text-foreground leading-relaxed text-justify">
+                Hi! I’m Josh Bradley Cimanes, a third-year Computer Science student at the University of the Philippines Manila, passionate about full-stack development, AI/ML, and creating impactful tech solutions. I enjoy collaborating in hackathons and student orgs, and have led and won several tech competitions.
+              </p>
+              <p className="text-xl text-foreground leading-relaxed text-justify">
+              I specialize in frontend development with React, TypeScript, and modern web technologies, with a solid foundation in backend development. I’m currently exploring AI to integrate intelligent systems into web apps for more impactful, user-friendly solutions, and I’m passionate about mentoring and contributing to the tech community.
+              </p>
+            </div>
+            <div className="bg-gradient-to-br from-white/10 via-white/5 to-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-5 shadow-2xl flex-1 mt-3 hover:shadow-3xl transition-all duration-300 hover:border-white/30">
+              <div className="flex items-start gap-6 h-full">
+                <div className="p-4 bg-gradient-to-br from-primary/20 to-primary/10 rounded-xl shadow-lg">
+                  <Languages className="text-primary" size={28} />
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-xl font-semibold mb-2">{title}</h3>
-                  <p className="text-muted-foreground leading-relaxed">{description}</p>
+                  <h4 className="text-xl font-bold mb-2 bg-gradient-to-r from-foreground to-foreground/80 bg-clip-text text-transparent">Languages</h4>
+                  <div className="space-y-3">
+                    <p className="text-base text-foreground/90 font-medium">• Native Filipino</p>
+                    <p className="text-base text-foreground/90 font-medium">• Fluent English</p>
+                    <p className="text-base text-foreground/90 font-medium">• Conversational Mandarin (HSK 4/HSKK)</p>
+                  </div>
                 </div>
               </div>
             </div>
-          ))}
-        </div>
+          </div>
 
-        <div className="mt-16 text-center">
-          <div className="inline-flex items-center gap-4 bg-card border border-border rounded-xl px-8 py-6">
-            <div className="text-2xl">🚀</div>
-            <div className="text-left">
-              <p className="font-semibold">Ready to collaborate?</p>
-              <p className="text-sm text-muted-foreground">Let's build something amazing together!</p>
+          {/* Right side - Education */}
+          <div className="space-y-3">
+            
+            <div className="bg-gradient-to-br from-white/10 via-white/5 to-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-5 shadow-2xl hover:shadow-3xl transition-all duration-300 hover:border-white/30">
+              <div className="flex items-start gap-6">
+                <div className="p-4 bg-gradient-to-br from-primary/20 to-primary/10 rounded-xl shadow-lg">
+                  <GraduationCap className="text-primary" size={28} />
+                </div>
+                <div className="flex-1">
+                  <h4 className="text-xl font-bold mb-2 bg-gradient-to-r from-foreground to-foreground/80 bg-clip-text text-transparent">University of the Philippines Manila</h4>
+                  <p className="text-primary font-semibold mb-2 text-lg">BS Computer Science (2023-2027)</p>
+                  <p className="text-muted-foreground mb-4 font-medium">Manila, Philippines</p>
+                  <div className="space-y-3">
+                    <p className="text-base text-foreground/90 font-medium">• College Scholar/Dean's List | AY 2023-2025 (3 Semesters)</p>
+                    <p className="text-base text-foreground/90 font-medium">• Google Developer Groups on Campus UP Manila<br/>- CTO (AY 2025-2026)</p>
+                    <p className="text-base text-foreground/90 font-medium">• UP Society of Computer Scientists<br/> - VP for Projects (AY 2025-2026)</p>
+                    <p className="text-base text-foreground/90 font-medium">• Level Up - Project Head (AY 2024-2025)</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-gradient-to-br from-white/10 via-white/5 to-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-5 shadow-2xl hover:shadow-3xl transition-all duration-300 hover:border-white/30">
+              <div className="flex items-start gap-6">
+                <div className="p-4 bg-gradient-to-br from-primary/20 to-primary/10 rounded-xl shadow-lg">
+                  <GraduationCap className="text-primary" size={28} />
+                </div>
+                <div className="flex-1">
+                  <h4 className="text-xl font-bold mb-2 bg-gradient-to-r from-foreground to-foreground/80 bg-clip-text text-transparent">Chiang Kai Shek College</h4>
+                  <p className="text-primary font-semibold mb-2 text-lg">High School Diploma (2008-2023)</p>
+                  <p className="text-muted-foreground mb-4 font-medium">Manila, Philippines</p>
+                  <div className="space-y-3">
+                    <p className="text-base text-foreground/90 font-medium">• With High Honors</p>
+                    <p className="text-base text-foreground/90 font-medium">• Track and Field Varsity</p>
+                    <p className="text-base text-foreground/90 font-medium">• Chess Team Varsity</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
+      
+          
+          
+        
       </div>
     </section>
   );
