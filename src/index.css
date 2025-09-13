@@ -1,0 +1,172 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Josh Cimanes Portfolio Design System */
+
+@layer base {
+  :root {
+    /* Portfolio Theme - Dark Navy with Orange Accents */
+    --background: 218 25% 12%;              /* Dark navy background */
+    --foreground: 0 0% 98%;                 /* Pure white text */
+    
+    --card: 220 20% 16%;                    /* Slightly lighter than background */
+    --card-foreground: 0 0% 98%;
+    
+    --popover: 220 20% 16%;
+    --popover-foreground: 0 0% 98%;
+    
+    --primary: 25 95% 53%;                  /* Orange accent */
+    --primary-foreground: 0 0% 98%;
+    
+    --secondary: 220 20% 20%;               /* Dark gray for secondary elements */
+    --secondary-foreground: 0 0% 90%;
+    
+    --muted: 220 15% 18%;                   /* Muted backgrounds */
+    --muted-foreground: 0 0% 65%;
+    
+    --accent: 25 95% 53%;                   /* Orange accent */
+    --accent-foreground: 0 0% 98%;
+    
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    
+    --border: 220 20% 20%;
+    --input: 220 20% 16%;
+    --ring: 258 90% 66%;
+    
+    --radius: 0.75rem;
+    
+    /* Portfolio Specific Variables */
+    --nav-background: 220 25% 14%;          /* Navigation background */
+    --nav-hover: 25 95% 53%;                /* Orange hover state */
+    --hero-gradient-start: 25 95% 53%;      /* Orange gradient start */
+    --hero-gradient-end: 35 95% 58%;        /* Orange gradient end */
+    --glow-color: 25 95% 53%;               /* Glow effect color */
+    
+    /* Smooth Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground font-sans;
+    font-family: 'Inter', sans-serif;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  /* Hero Text Styles */
+  .hero-text {
+    @apply text-8xl md:text-9xl font-black tracking-tight;
+    background: linear-gradient(135deg, hsl(var(--foreground)), hsl(var(--primary)));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .hero-text-simple {
+    @apply text-7xl md:text-8xl font-black tracking-tight text-foreground;
+    text-shadow: 0 0 20px hsl(var(--glow-color) / 0.3), 
+                 0 0 40px hsl(var(--glow-color) / 0.2);
+  }
+  
+  .hero-subtitle {
+    @apply text-lg md:text-xl text-muted-foreground font-medium tracking-wide;
+  }
+  
+  /* Navigation Styles */
+  .nav-item {
+    @apply flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-300;
+    @apply hover:bg-nav-hover/10 hover:text-primary hover:scale-105;
+    @apply cursor-pointer backdrop-blur-sm;
+  }
+  
+  .nav-item.active {
+    @apply bg-primary/20 text-primary;
+    box-shadow: 0 0 20px hsl(var(--glow-color) / 0.3);
+  }
+  
+  .social-button {
+    @apply w-12 h-12 rounded-full bg-card border border-border;
+    @apply flex items-center justify-center transition-all duration-300;
+    @apply hover:bg-primary hover:text-primary-foreground hover:scale-110;
+    @apply hover:shadow-lg hover:shadow-primary/25;
+  }
+  
+  /* Button Variants */
+  .btn-hero {
+    @apply px-8 py-4 bg-primary text-primary-foreground rounded-xl;
+    @apply font-semibold text-lg transition-all duration-300;
+    @apply hover:bg-primary/90 hover:scale-105 hover:shadow-xl;
+    @apply hover:shadow-primary/25 active:scale-95;
+  }
+  
+  .btn-outline {
+    @apply px-6 py-3 border-2 border-primary text-primary rounded-lg;
+    @apply font-medium transition-all duration-300 hover:bg-primary;
+    @apply hover:text-primary-foreground hover:scale-105;
+  }
+  
+  /* Card Styles */
+  .project-card {
+    @apply bg-card border border-border rounded-xl p-6;
+    @apply transition-all duration-300 hover:border-primary/50;
+    @apply hover:shadow-xl hover:shadow-primary/10 hover:scale-105;
+  }
+  
+  .experience-card {
+    @apply bg-card border border-border rounded-lg p-5;
+    @apply transition-all duration-300 hover:border-primary/30;
+    @apply hover:bg-card/80 backdrop-blur-sm;
+  }
+  
+  /* Glow Effects */
+  .glow-text {
+    text-shadow: 0 0 30px hsl(var(--glow-color) / 0.5);
+  }
+  
+  .glow-border {
+    box-shadow: 0 0 0 1px hsl(var(--border)), 
+                0 0 20px hsl(var(--glow-color) / 0.3);
+  }
+  
+  /* Section Spacing with Navbar Clearance */
+  .section-container {
+    @apply min-h-screen flex items-center justify-center px-6 py-20;
+    margin-top: 5rem; /* Space for top navbar */
+  }
+  
+  .section-content {
+    @apply max-w-6xl mx-auto w-full;
+  }
+
+  /* Mobile responsive adjustments */
+  @media (max-width: 1024px) {
+    .section-container {
+      margin-top: 1rem;
+    }
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
