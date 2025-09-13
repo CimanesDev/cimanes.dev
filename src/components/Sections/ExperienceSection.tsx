@@ -1,132 +1,190 @@
-import { Calendar, MapPin, Trophy, Users } from 'lucide-react';
+import { Calendar, MapPin, Code, Briefcase, Users, GraduationCap } from 'lucide-react';
 
 export function ExperienceSection() {
   const experiences = [
     {
       title: "Lead Developer",
       company: "Expoxur",
-      location: "Manila, Philippines",
-      period: "2024 - Present",
-      description: "Leading development initiatives and technical strategy for innovative web solutions.",
+      location: "Philippines",
+      period: "August 2025 - Present",
+      description: "Leading the website development for Expoxur, a startup connecting Social Enterprises with communities.",
       skills: ["React", "TypeScript", "Leadership", "Project Management"],
       type: "leadership"
     },
     {
-      title: "Web/App Developer Intern",
+      title: "Web/App Developer",
       company: "Wisdom IPVault",
-      location: "Manila, Philippines", 
-      period: "2024",
-      description: "Developed web and mobile applications using modern technologies and best practices.",
-      skills: ["React", "JavaScript", "Mobile Development", "API Integration"],
+      location: "Philippines", 
+      period: "September 2025 - Present",
+      description: "Details about this experience will be added soon.",
+      skills: ["TBD"],
       type: "internship"
-    },
-    {
-      title: "CTO",
-      company: "Google Developer Groups UP Manila",
-      location: "Manila, Philippines",
-      period: "2025 - 2026",
-      description: "Leading technical initiatives and developer community programs at UP Manila's Google Developer Group.",
-      skills: ["Leadership", "Community Management", "Technical Strategy"],
-      type: "leadership"
-    },
+    }
+  ];
+
+  const organizations = [
     {
       title: "VP for Projects",
       company: "UP Society of Computer Scientists",
       location: "Manila, Philippines",
-      period: "2025 - 2026",
+      period: "July 2025 - 2026", 
       description: "Overseeing project management and technical initiatives for the computer science society.",
       skills: ["Project Management", "Leadership", "Event Coordination"],
       type: "leadership"
     },
     {
       title: "Project Head",
-      company: "Level Up",
+      company: "Level Up - UP Manila",
       location: "Manila, Philippines",
-      period: "2024 - 2025",
-      description: "Led development projects and technical initiatives for the organization.",
-      skills: ["Project Leadership", "Technical Development", "Team Management"],
+      period: "August 2024 - May 2025",
+      description: "Planned and spearheaded gaming events to deliver engaging experiences for the UP Manila gaming community.",
+      skills: ["Project Leadership"],
       type: "leadership"
+    },
+    {
+      title: "Chief Technology Officer / CTO",
+      company: "Google Developer Groups on CampusUP Manila",
+      location: "Manila, Philippines",
+      period: "September 2025 - 2026",
+      description: "Role and initiatives to be announced soon.",
+      skills: ["TBA"],
+      type: "leadership",
+      isFullWidth: true
     }
   ];
 
   const getTypeIcon = (type: string) => {
     switch (type) {
-      case 'achievement':
-        return Trophy;
       case 'leadership':
-        return Users;
+        return Code;
+      case 'internship':
+        return Briefcase;
       default:
         return Calendar;
     }
   };
 
-  const getTypeColor = (type: string) => {
-    switch (type) {
-      case 'achievement':
-        return 'text-yellow-400';
-      case 'leadership':
-        return 'text-blue-400';
-      default:
-        return 'text-primary';
-    }
+  const getOrgIcon = (company: string) => {
+    if (company.includes("Google")) return Users;
+    if (company.includes("UP Society")) return GraduationCap;
+    if (company.includes("Level Up")) return Code;
+    return Users;
   };
 
   return (
     <section id="experience" className="section-container">
       <div className="section-content">
-        <div className="text-left mb-16">
-          <h2 className="text-5xl md:text-6xl font-bold mb-6">Experience</h2>
-          <p className="text-xl text-muted-foreground max-w-3xl">
-            My journey through internships, hackathons, and leadership roles
-          </p>
+        <div className="text-left mb-6">
+          <h2 className="text-3xl md:text-4xl font-bold mb-3">Experience</h2>
         </div>
 
-        <div className="space-y-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {experiences.map((exp, index) => {
             const Icon = getTypeIcon(exp.type);
             return (
               <div 
                 key={index}
-                className="experience-card animate-fade-in"
-                style={{ animationDelay: `${index * 0.2}s` }}
+                className="bg-gradient-to-br from-white/10 via-white/5 to-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-8 shadow-2xl hover:shadow-3xl transition-all duration-300 hover:border-white/30"
               >
-                <div className="flex flex-col md:flex-row gap-6">
-                  <div className="flex-shrink-0">
-                    <div className={`p-4 bg-card rounded-lg border border-border ${getTypeColor(exp.type)}`}>
-                      <Icon size={32} />
+                <div className="flex items-start gap-6 h-full">
+                  <div className="p-4 bg-gradient-to-br from-primary/20 to-primary/10 rounded-xl shadow-lg">
+                    <Icon className="text-primary" size={28} />
+                  </div>
+                  <div className="flex-1">
+                    <h4 className="text-2xl font-bold mb-3 bg-gradient-to-r from-foreground to-foreground/80 bg-clip-text text-transparent">{exp.title}</h4>
+                    <p className="text-primary font-semibold mb-3 text-xl">{exp.company}</p>
+                    <p className="text-muted-foreground mb-4 font-medium text-lg">{exp.location} • {exp.period}</p>
+                    <div className="space-y-3">
+                      <p className="text-lg text-foreground/90 font-medium">{exp.description}</p>
+                      <div className="flex flex-wrap gap-2">
+                        {exp.skills.map((skill) => (
+                          <span 
+                            key={skill}
+                            className="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium"
+                          >
+                            {skill}
+                          </span>
+                        ))}
+                      </div>
                     </div>
                   </div>
-                  
-                  <div className="flex-1">
-                    <div className="mb-4">
-                      <h3 className="text-2xl font-bold mb-2">{exp.title}</h3>
-                      <p className="text-lg text-primary font-semibold mb-2">{exp.company}</p>
-                      
-                      <div className="flex flex-wrap gap-4 text-sm text-muted-foreground">
-                        <div className="flex items-center gap-1">
-                          <Calendar size={16} />
-                          {exp.period}
-                        </div>
-                        <div className="flex items-center gap-1">
-                          <MapPin size={16} />
-                          {exp.location}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Organizations Subsection */}
+        <div className="mt-12">
+          <div className="text-left mb-6">
+            <h3 className="text-2xl md:text-3xl font-bold mb-3">Organizations</h3>
+          </div>
+          
+          {/* Top row - VP for Projects and Project Head */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+            {organizations.filter(org => !org.isFullWidth).map((org, index) => {
+              const Icon = getOrgIcon(org.company);
+              return (
+                <div 
+                  key={index}
+                  className="bg-gradient-to-br from-white/10 via-white/5 to-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-8 shadow-2xl hover:shadow-3xl transition-all duration-300 hover:border-white/30"
+                >
+                  <div className="flex items-start gap-6 h-full">
+                    <div className="p-4 bg-gradient-to-br from-primary/20 to-primary/10 rounded-xl shadow-lg">
+                      <Icon className="text-primary" size={28} />
+                    </div>
+                    <div className="flex-1">
+                      <h4 className="text-2xl font-bold mb-3 bg-gradient-to-r from-foreground to-foreground/80 bg-clip-text text-transparent">{org.title}</h4>
+                      <p className="text-primary font-semibold mb-3 text-xl">{org.company}</p>
+                      <p className="text-muted-foreground mb-4 font-medium text-lg">{org.location} • {org.period}</p>
+                      <div className="space-y-3">
+                        <p className="text-lg text-foreground/90 font-medium">{org.description}</p>
+                        <div className="flex flex-wrap gap-2">
+                          {org.skills.map((skill) => (
+                            <span 
+                              key={skill}
+                              className="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium"
+                            >
+                              {skill}
+                            </span>
+                          ))}
                         </div>
                       </div>
                     </div>
-                    
-                    <p className="text-foreground/90 mb-4 leading-relaxed">
-                      {exp.description}
-                    </p>
-                    
-                    <div className="flex flex-wrap gap-2">
-                      {exp.skills.map((skill) => (
-                        <span 
-                          key={skill}
-                          className="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium"
-                        >
-                          {skill}
-                        </span>
-                      ))}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Full width CTO card */}
+          {organizations.filter(org => org.isFullWidth).map((org, index) => {
+            const Icon = getOrgIcon(org.company);
+            return (
+              <div 
+                key={index}
+                className="bg-gradient-to-br from-white/10 via-white/5 to-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-8 shadow-2xl hover:shadow-3xl transition-all duration-300 hover:border-white/30"
+              >
+                <div className="flex items-start gap-6 h-full">
+                  <div className="p-4 bg-gradient-to-br from-primary/20 to-primary/10 rounded-xl shadow-lg">
+                    <Icon className="text-primary" size={28} />
+                  </div>
+                  <div className="flex-1">
+                    <h4 className="text-2xl font-bold mb-3 bg-gradient-to-r from-foreground to-foreground/80 bg-clip-text text-transparent">{org.title}</h4>
+                    <p className="text-primary font-semibold mb-3 text-xl">{org.company}</p>
+                    <p className="text-muted-foreground mb-4 font-medium text-lg">{org.location} • {org.period}</p>
+                    <div className="space-y-3">
+                      <p className="text-lg text-foreground/90 font-medium">{org.description}</p>
+                      <div className="flex flex-wrap gap-2">
+                        {org.skills.map((skill) => (
+                          <span 
+                            key={skill}
+                            className="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium"
+                          >
+                            {skill}
+                          </span>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 </div>

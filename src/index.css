@@ -145,7 +145,7 @@
   
   /* Section Spacing with Navbar Clearance */
   .section-container {
-    @apply min-h-screen flex items-center justify-center px-6 py-20;
+    @apply min-h-screen flex items-center justify-center px-6 py-8;
     margin-top: 5rem; /* Space for top navbar */
   }
   
