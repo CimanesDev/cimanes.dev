@@ -4,7 +4,7 @@ import { useState } from 'react';
 const socialLinks = [
   { icon: Github, href: 'https://github.com/cimanesdev', label: 'GitHub' },
   { icon: Linkedin, href: 'https://linkedin.com/in/cimanesdev', label: 'LinkedIn' },
-  { icon: Download, href: '/cv.pdf', label: 'Download CV', download: true },
+  { icon: Download, href: '/Josh Bradley Cimanes CV.pdf', label: 'Download CV', download: true },
   { icon: Mail, href: 'mailto:jmcimanes@up.edu.ph', label: 'Email' },
 ];
 
