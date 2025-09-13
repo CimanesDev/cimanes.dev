@@ -78,7 +78,7 @@ export function ExperienceSection() {
           <h2 className="text-2xl md:text-3xl font-bold mb-2">Experience</h2>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6">
           {experiences.map((exp, index) => {
             const Icon = getTypeIcon(exp.type);
             return (

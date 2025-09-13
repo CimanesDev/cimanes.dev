@@ -31,7 +31,7 @@ export function HeroSection() {
   }, []);
 
   return (
-    <section id="home" className="h-screen flex items-center justify-center px-6">
+    <section id="home" className="h-screen flex items-center justify-center px-4 md:px-6">
       <div className="max-w-6xl mx-auto w-full">
         <div className="animate-fade-in relative flex items-center justify-center h-full">
           {/* Container for the name and positioning elements */}
@@ -47,7 +47,7 @@ export function HeroSection() {
             </h1>
             
             {/* Frontend Developer positioned bottom right of name */}
-            <p className="absolute -bottom-12 -right-8 text-lg md:text-xl text-muted-foreground font-medium tracking-wide">
+            <p className="absolute -bottom-12 -right-4 md:-right-8 text-sm md:text-lg lg:text-xl text-muted-foreground font-medium tracking-wide">
               Front-End Developer
             </p>
           </div>

@@ -17,7 +17,7 @@ export function SocialNavigation() {
   };
 
   return (
-    <nav className="fixed right-8 top-1/2 -translate-y-1/2 z-50">
+    <nav className="fixed right-8 top-1/2 -translate-y-1/2 z-50 hidden lg:block">
       <div className="bg-nav-background/80 backdrop-blur-lg border border-border rounded-full p-4 glow-border">
         <div className="flex flex-col items-center gap-4">
           {socialLinks.map(({ icon: Icon, href, label, download }) => (
@@ -41,6 +41,48 @@ export function SocialNavigation() {
           ))}
           
           <div className="w-6 h-px bg-border my-2" />
+          
+          <button
+            onClick={toggleTheme}
+            className="social-button"
+            aria-label="Toggle theme"
+          >
+            {isDark ? <Sun size={18} /> : <Moon size={18} />}
+          </button>
+        </div>
+      </div>
+    </nav>
+  );
+}
+
+export function MobileSocialNavigation() {
+  const [isDark, setIsDark] = useState(true);
+
+  const toggleTheme = () => {
+    setIsDark(!isDark);
+    // In a real app, you'd implement actual theme switching here
+  };
+
+  return (
+    <nav className="fixed top-4 left-1/2 -translate-x-1/2 z-50 lg:hidden">
+      <div className="bg-nav-background/80 backdrop-blur-lg border border-border rounded-full px-4 py-2 glow-border">
+        <div className="flex items-center gap-3">
+          {socialLinks.map(({ icon: Icon, href, label, download }) => (
+            <a
+              key={label}
+              href={href}
+              target={download ? "_self" : "_blank"}
+              rel={download ? "" : "noopener noreferrer"}
+              download={download ? "Josh_Cimanes_CV.pdf" : undefined}
+              className="social-button group relative"
+              aria-label={label}
+              title={label}
+            >
+              <Icon size={18} />
+            </a>
+          ))}
+          
+          <div className="w-px h-6 bg-border mx-1" />
           
           <button
             onClick={toggleTheme}

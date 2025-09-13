@@ -3,13 +3,13 @@ import { Mail, MapPin, Github, Linkedin } from 'lucide-react';
 export function ContactSection() {
 
   return (
-    <section id="contact" className="flex items-start justify-center px-6 py-1" style={{ marginTop: '1rem', marginBottom: '10rem' }}>
+    <section id="contact" className="flex items-start justify-center px-4 md:px-6 py-1" style={{ marginTop: '1rem', marginBottom: '10rem' }}>
       <div className="section-content">
         <div className="text-left mb-2">
           <h2 className="text-2xl md:text-3xl font-bold mb-1">Get In Touch</h2>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6">
           {/* Left Card - Contact Information */}
           <div className="bg-gradient-to-br from-white/10 via-white/5 to-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-6 shadow-2xl hover:shadow-3xl transition-all duration-300 hover:border-white/30 hover:-translate-y-1 animate-fade-in">
             <h3 className="text-xl font-bold mb-4 text-foreground">Contact Information</h3>

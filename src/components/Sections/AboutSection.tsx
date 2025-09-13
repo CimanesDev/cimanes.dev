@@ -31,14 +31,14 @@ export function AboutSection() {
           <h2 className="text-2xl md:text-3xl font-bold mb-2">About Me</h2>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6">
           {/* Left side - Description */}
           <div className="flex flex-col h-full">
             <div className="space-y-3 flex-shrink-0">
-              <p className="text-xl text-foreground leading-relaxed text-justify">
+              <p className="text-lg md:text-xl text-foreground leading-relaxed text-justify">
                 Hi! I'm Josh Bradley Cimanes, a third-year Computer Science student at the University of the Philippines Manila, passionate about full-stack development, AI/ML, and creating impactful tech solutions. I enjoy collaborating in hackathons and student orgs, and have led and won several tech competitions.
               </p>
-              <p className="text-xl text-foreground leading-relaxed text-justify">
+              <p className="text-lg md:text-xl text-foreground leading-relaxed text-justify">
               I specialize in frontend development with React, TypeScript, and modern web technologies, with a solid foundation in backend development. I'm currently exploring AI to integrate intelligent systems into web apps for more impactful, user-friendly solutions, and I'm passionate about mentoring and contributing to the tech community.
               </p>
             </div>

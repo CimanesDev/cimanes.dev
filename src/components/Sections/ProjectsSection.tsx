@@ -193,7 +193,7 @@ export function ProjectsSection() {
         {/* Other Projects - Paginated Grid */}
         <div className="relative">
           {/* Projects Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
             {projects.slice(1).slice(currentPage * projectsPerPage, (currentPage + 1) * projectsPerPage).map((project, index) => {
               const isExpanded = expandedProject === project.title;
               const hasDemo = project.demo && project.demo !== "https://demo.com";
