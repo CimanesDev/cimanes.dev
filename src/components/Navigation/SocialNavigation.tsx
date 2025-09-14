@@ -13,8 +13,8 @@ export function SocialNavigation() {
 
   return (
     <nav className="fixed right-8 top-1/2 -translate-y-1/2 z-50 hidden lg:block">
-      <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-full p-4 shadow-2xl" style={{ boxShadow: '0 0 0 1px hsl(var(--border)), 0 0 10px hsl(var(--glow-color) / 0.2), 0 0 20px hsl(var(--glow-color) / 0.1)' }}>
-        <div className="flex flex-col items-center gap-4">
+      <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-full p-5 shadow-2xl" style={{ boxShadow: '0 0 0 1px hsl(var(--border)), 0 0 10px hsl(var(--glow-color) / 0.2), 0 0 20px hsl(var(--glow-color) / 0.1)' }}>
+        <div className="flex flex-col items-center gap-5">
           {socialLinks.map(({ icon: Icon, href, label, download }) => (
             <a
               key={label}
@@ -22,11 +22,11 @@ export function SocialNavigation() {
               target={download ? "_self" : "_blank"}
               rel={download ? "" : "noopener noreferrer"}
               download={download ? "Josh_Cimanes_CV.pdf" : undefined}
-              className="social-button group relative"
+              className="w-14 h-14 rounded-full bg-card border border-border flex items-center justify-center transition-all duration-300 hover:bg-primary hover:text-primary-foreground hover:scale-110 hover:shadow-lg hover:shadow-primary/25 group relative"
               aria-label={label}
               title={label}
             >
-              <Icon size={18} />
+              <Icon size={20} />
               {download && (
                 <div className="absolute right-full mr-2 px-2 py-1 bg-background/90 backdrop-blur-sm border border-border rounded-md text-xs whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-50">
                   Download CV
@@ -39,10 +39,10 @@ export function SocialNavigation() {
           
           <button
             onClick={toggleTheme}
-            className="social-button"
+            className="w-14 h-14 rounded-full bg-card border border-border flex items-center justify-center transition-all duration-300 hover:bg-primary hover:text-primary-foreground hover:scale-110 hover:shadow-lg hover:shadow-primary/25"
             aria-label="Toggle theme"
           >
-            {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
+            {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
           </button>
         </div>
       </div>
@@ -54,8 +54,8 @@ export function MobileSocialNavigation() {
   const { theme, toggleTheme } = useTheme();
 
   return (
-    <nav className="fixed top-4 left-1/2 -translate-x-1/2 z-50 lg:hidden">
-      <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-full px-4 py-2 shadow-2xl" style={{ boxShadow: '0 0 0 1px hsl(var(--border)), 0 0 10px hsl(var(--glow-color) / 0.2), 0 0 20px hsl(var(--glow-color) / 0.1)' }}>
+    <nav className="fixed top-4 right-4 z-50 lg:hidden">
+      <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-full px-4 py-3 shadow-2xl" style={{ boxShadow: '0 0 0 1px hsl(var(--border)), 0 0 10px hsl(var(--glow-color) / 0.2), 0 0 20px hsl(var(--glow-color) / 0.1)' }}>
         <div className="flex items-center gap-3">
           {socialLinks.map(({ icon: Icon, href, label, download }) => (
             <a
@@ -64,7 +64,7 @@ export function MobileSocialNavigation() {
               target={download ? "_self" : "_blank"}
               rel={download ? "" : "noopener noreferrer"}
               download={download ? "Josh_Cimanes_CV.pdf" : undefined}
-              className="social-button group relative"
+              className="w-10 h-10 rounded-full bg-card border border-border flex items-center justify-center transition-all duration-300 hover:bg-primary hover:text-primary-foreground hover:scale-110 hover:shadow-lg hover:shadow-primary/25"
               aria-label={label}
               title={label}
             >
@@ -76,7 +76,7 @@ export function MobileSocialNavigation() {
           
           <button
             onClick={toggleTheme}
-            className="social-button"
+            className="w-10 h-10 rounded-full bg-card border border-border flex items-center justify-center transition-all duration-300 hover:bg-primary hover:text-primary-foreground hover:scale-110 hover:shadow-lg hover:shadow-primary/25"
             aria-label="Toggle theme"
           >
             {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}

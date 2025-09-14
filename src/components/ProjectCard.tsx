@@ -28,7 +28,7 @@ export const ProjectCard = memo(({ project, index, isExpanded, onToggle }: Proje
   
   return (
     <div 
-      className="group bg-gradient-to-br from-white/5 via-white/5 to-white/10 backdrop-blur-xl border border-white/10 rounded-xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 hover:border-white/20 hover:-translate-y-1 cursor-pointer animate-fade-in"
+      className="group bg-gradient-to-br from-white/5 via-white/5 to-white/10 backdrop-blur-xl border border-white/10 rounded-xl p-4 md:p-6 shadow-xl hover:shadow-2xl transition-all duration-300 hover:border-white/20 hover:-translate-y-1 cursor-pointer animate-fade-in"
       style={{ animationDelay: `${index * 0.1}s` }}
       onClick={onToggle}
     >
@@ -57,17 +57,17 @@ export const ProjectCard = memo(({ project, index, isExpanded, onToggle }: Proje
         </div>
       )}
 
-      <div className="flex items-center justify-between mb-4">
-        <h4 className="text-lg font-bold">{project.title}</h4>
+      <div className="flex items-center justify-between mb-3 md:mb-4">
+        <h4 className="text-base md:text-lg font-bold">{project.title}</h4>
         {isExpanded ? (
-          <ChevronUp className="text-primary" size={20} />
+          <ChevronUp className="text-primary" size={18} />
         ) : (
-          <ChevronDown className="text-primary" size={20} />
+          <ChevronDown className="text-primary" size={18} />
         )}
       </div>
 
-      <p className="text-sm text-foreground/80 mb-4 leading-relaxed">
-        {isExpanded ? project.description : `${project.description.substring(0, 120)}...`}
+      <p className="text-xs md:text-sm text-foreground/80 mb-3 md:mb-4 leading-relaxed">
+        {isExpanded ? project.description : `${project.description.substring(0, 100)}...`}
       </p>
 
       <div className="flex flex-wrap gap-2 mb-4">

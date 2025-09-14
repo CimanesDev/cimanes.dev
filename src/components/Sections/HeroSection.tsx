@@ -46,23 +46,23 @@ export function HeroSection() {
   }, []);
 
   return (
-    <section id="home" className="h-screen flex items-center justify-center px-4 md:px-6">
+    <section id="home" className="min-h-screen flex items-center justify-center px-4 md:px-6 py-16 md:py-0">
       <div className="max-w-6xl mx-auto w-full">
-        <div className="animate-fade-in relative flex items-center justify-center h-full">
+        <div className="animate-fade-in relative flex items-center justify-center min-h-[80vh] md:h-full">
           {/* Container for the name and positioning elements */}
           <div className="relative">
             {/* Hi, I'm positioned top left of name */}
-            <p className="absolute -top-12 left-0 text-sm uppercase tracking-widest text-muted-foreground font-medium">
+            <p className="absolute -top-8 md:-top-12 left-0 text-xs md:text-sm uppercase tracking-widest text-muted-foreground font-medium">
               Hi, I'm
             </p>
             
             {/* Josh Cimanes centered */}
-            <h1 className="hero-text-simple text-center">
+            <h1 className="hero-text-simple text-center text-5xl md:text-7xl lg:text-8xl">
               Josh Cimanes
             </h1>
             
             {/* Frontend Developer positioned bottom right of name */}
-            <p className="absolute -bottom-12 -right-4 md:-right-8 text-sm md:text-lg lg:text-xl text-muted-foreground font-medium tracking-wide">
+            <p className="absolute -bottom-8 md:-bottom-12 -right-2 md:-right-8 text-xs md:text-sm lg:text-lg xl:text-xl text-muted-foreground font-medium tracking-wide">
               Front-End Developer
             </p>
           </div>

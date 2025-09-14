@@ -1,5 +1,6 @@
 import { StickyNavigation } from './Navigation/StickyNavigation';
 import { SocialNavigation, MobileSocialNavigation } from './Navigation/SocialNavigation';
+import { MobileNavigation } from './Navigation/MobileNavigation';
 import { HeroSection } from './Sections/HeroSection';
 import { AboutSection } from './Sections/AboutSection';
 import { ExperienceSection } from './Sections/ExperienceSection';
@@ -14,6 +15,7 @@ export function Portfolio() {
       <StickyNavigation />
       <SocialNavigation />
       <MobileSocialNavigation />
+      <MobileNavigation />
       
       {/* Main Content */}
       <main>

@@ -118,8 +118,8 @@ export function ProjectsSection() {
         </div>
 
         {/* Featured Project - Compact Showcase */}
-        <div className="mb-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 items-center">
+        <div className="mb-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 items-center">
             {/* Left: Project Mockup/Showcase */}
             <div className="order-2 lg:order-1">
               <div className="bg-gradient-to-br from-white/10 via-white/5 to-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-3 shadow-2xl hover:shadow-3xl transition-all duration-300 hover:border-white/30 hover:-translate-y-1 animate-fade-in">
@@ -196,7 +196,7 @@ export function ProjectsSection() {
         {/* Other Projects - Paginated Grid */}
         <div className="relative">
           {/* Projects Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {projects.slice(1).slice(currentPage * projectsPerPage, (currentPage + 1) * projectsPerPage).map((project, index) => {
               const isExpanded = expandedProject === project.title;
               

@@ -46,7 +46,7 @@ export function AchievementsSection() {
           <h2 className="text-2xl md:text-3xl font-bold mb-2">Achievements</h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {achievements.map((achievement, index) => {
             return (
               <div 
