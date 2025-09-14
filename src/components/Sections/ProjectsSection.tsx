@@ -1,4 +1,4 @@
-import { ExternalLink, Github, Code2, Brain, ShoppingCart, Calendar, ChevronDown, ChevronUp, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ExternalLink, Code2, Brain, ShoppingCart, Calendar, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useState } from 'react';
 import { OptimizedImage } from '@/components/ui/optimized-image';
 import { ProjectCard } from '@/components/ProjectCard';
@@ -18,7 +18,6 @@ export function ProjectsSection() {
       title: "EDC atbp",
       description: "Developed a complete e-commerce solution with role-based dashboards for administrators and customers, featuring product management, secure transactions, and real-time inventory tracking to replicate a seamless online shopping experience.",
       tech: ["ReactJS", "TailwindCSS", "Firebase"],
-      icon: ShoppingCart,
       color: "text-green-400",
       bgColor: "bg-green-400/10",
       github: "https://github.com",
@@ -32,7 +31,6 @@ export function ProjectsSection() {
       title: "KaagapAI",
       description: "Developed a website that helps people log in their symptoms and lets AI analyze, get a diagnosis, and recommend nearby clinics/hospitals.",
       tech: ["ReactJS", "TailwindCSS", "Gemini API", "Firebase"],
-      icon: Brain,
       color: "text-purple-400",
       bgColor: "bg-purple-400/10",
       github: "https://github.com",
@@ -45,7 +43,6 @@ export function ProjectsSection() {
       title: "SalbaBida",
       description: "Built the entire frontend of a real-time disaster response platform connecting victims (Biktima) with responders (Tutulong), delivering an intuitive and responsive user experience that streamlined emergency coordination.",
       tech: ["ReactJS", "Google Maps API", "Python Flask"],
-      icon: Calendar,
       color: "text-blue-400",
       bgColor: "bg-blue-400/10",
       github: "https://github.com",
@@ -58,7 +55,6 @@ export function ProjectsSection() {
       title: "Quine-McCluskey Minimizer",
       description: "Developed a web application with an intuitive user interface that minimizes boolean functions using the Quine-McCluskey Method for our final machine problem, allowing users to efficiently simplify complex logical expressions.",
       tech: ["ReactJS"],
-      icon: Code2,
       color: "text-orange-400",
       bgColor: "bg-orange-400/10",
       github: "https://github.com",
@@ -71,7 +67,6 @@ export function ProjectsSection() {
       title: "HellWeekCoffee",
       description: "Developed a Restaurant POS system as a school requirement for our final machine problem. It manages transactions, item encoding, customizations, and sales tracking to streamline coffee shop operations.",
       tech: ["Java"],
-      icon: Code2,
       color: "text-yellow-400",
       bgColor: "bg-yellow-400/10",
       github: "https://github.com",
@@ -84,7 +79,6 @@ export function ProjectsSection() {
       title: "Iskola",
       description: "Developed an AI-powered study assistant web app that helps students by summarizing uploaded notes, generating quizzes from the content, and providing a chatbot for concept clarification through Gemini API integration.",
       tech: ["ReactJS", "TailwindCSS", "Gemini API"],
-      icon: Brain,
       color: "text-blue-400",
       bgColor: "bg-blue-400/10",
       github: "https://github.com",
@@ -97,7 +91,6 @@ export function ProjectsSection() {
       title: "BantAI",
       description: "Built a website that enables users to analyze their traffic tickets for potential errors using AI, submit appeals directly to administrators, and look up violations by license plate number.",
       tech: ["ReactJS", "TailwindCSS", "Gemini API", "Google Maps API", "Firebase"],
-      icon: Brain,
       color: "text-red-400",
       bgColor: "bg-red-400/10",
       github: "https://github.com",
@@ -110,7 +103,6 @@ export function ProjectsSection() {
       title: "Tetris Effect",
       description: "Developed a Tetris clone with dynamic music, background effects, and multithreading for smoother gameplay. It has a highscore system and a leaderboard, as well as a local multiplayer game mode.",
       tech: ["JavaFX"],
-      icon: Code2,
       color: "text-pink-400",
       bgColor: "bg-pink-400/10",
       github: "https://github.com",

@@ -6,7 +6,7 @@ interface Project {
   title: string;
   description: string;
   tech: string[];
-  icon: any;
+  icon?: any;
   color: string;
   bgColor: string;
   github: string;

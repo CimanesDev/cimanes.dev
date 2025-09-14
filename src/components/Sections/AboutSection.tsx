@@ -9,20 +9,20 @@ export function AboutSection() {
   const { ref: skillsRef, isVisible: skillsVisible } = useScrollAnimation({ delay: 200 });
 
   const skills = [
-    { name: "HTML5", icon: "html5", level: 95, color: "orange" },
-    { name: "CSS3", icon: "css3", level: 90, color: "blue" },
-    { name: "TailwindCSS", icon: "tailwindcss", level: 95, color: "blue" },
-    { name: "Python", icon: "python", level: 80, color: "green" },
-    { name: "C#", icon: "c#", level: 75, color: "purple" },
-    { name: "TypeScript", icon: "typescript", level: 85, color: "blue" },
-    { name: "React", icon: "react", level: 90, color: "blue" },
-    { name: "ShadcnUI", icon: "shadcnui", level: 85, color: "primary" },
-    { name: "Git", icon: "git", level: 80, color: "orange" },
-    { name: "GitHub", icon: "github", level: 85, color: "primary" },
-    { name: "GitLab", icon: "gitlab", level: 75, color: "orange" },
-    { name: "Firebase", icon: "firebase", level: 80, color: "orange" },
-    { name: "Supabase", icon: "supabase", level: 70, color: "green" },
-    { name: "PostgreSQL", icon: "postgresql", level: 65, color: "blue" }
+    { name: "HTML5", icon: "html5" },
+    { name: "CSS3", icon: "css3" },
+    { name: "TailwindCSS", icon: "tailwindcss" },
+    { name: "Python", icon: "python" },
+    { name: "C#", icon: "c#" },
+    { name: "TypeScript", icon: "typescript" },
+    { name: "React", icon: "react" },
+    { name: "ShadcnUI", icon: "shadcnui" },
+    { name: "Git", icon: "git" },
+    { name: "GitHub", icon: "github" },
+    { name: "GitLab", icon: "gitlab" },
+    { name: "Firebase", icon: "firebase" },
+    { name: "Supabase", icon: "supabase" },
+    { name: "PostgreSQL", icon: "postgresql" }
   ];
 
   const { ref: skillCardsRef, visibleItems: skillCardsVisible } = useStaggeredAnimation(skills.length, 100);

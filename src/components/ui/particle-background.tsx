@@ -52,6 +52,14 @@ export const ParticleBackground = () => {
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
+      // Pre-calculate theme colors to avoid repeated calculations
+      const particleColor = theme === 'light' ? '0, 0, 0' : '255, 255, 255';
+      const connectionColor = theme === 'light' ? '0, 0, 0' : '255, 255, 255';
+      const baseOpacity = theme === 'light' ? 0.6 : 0.3;
+      const connectionBaseOpacity = theme === 'light' ? 0.15 : 0.03;
+      const lineWidth = theme === 'light' ? 0.6 : 0.3;
+
+      // Update and draw particles
       particlesRef.current.forEach((particle) => {
         particle.x += particle.vx;
         particle.y += particle.vy;
@@ -65,37 +73,31 @@ export const ParticleBackground = () => {
         // Draw particle
         ctx.beginPath();
         ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
-        // Use theme-appropriate colors with much better visibility
-        const particleColor = theme === 'light' ? '0, 0, 0' : '255, 255, 255';
-        const adjustedOpacity = theme === 'light' 
-          ? Math.min(particle.opacity * 3, 0.6) // Much more visible in light theme
-          : particle.opacity * 0.7; // Less visible in dark theme
-        ctx.fillStyle = `rgba(${particleColor}, ${adjustedOpacity})`;
+        ctx.fillStyle = `rgba(${particleColor}, ${Math.min(particle.opacity * (theme === 'light' ? 3 : 0.7), baseOpacity)})`;
         ctx.fill();
       });
 
-      // Draw connections (more subtle)
-      particlesRef.current.forEach((particle, i) => {
-        particlesRef.current.slice(i + 1).forEach((otherParticle) => {
+      // Draw connections with reduced complexity
+      const particles = particlesRef.current;
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          const particle = particles[i];
+          const otherParticle = particles[j];
           const dx = particle.x - otherParticle.x;
           const dy = particle.y - otherParticle.y;
-          const distance = Math.sqrt(dx * dx + dy * dy);
+          const distance = dx * dx + dy * dy; // Use squared distance to avoid sqrt
 
-          if (distance < 100) {
+          if (distance < 10000) { // 100 squared
+            const actualDistance = Math.sqrt(distance);
             ctx.beginPath();
             ctx.moveTo(particle.x, particle.y);
             ctx.lineTo(otherParticle.x, otherParticle.y);
-            // Use theme-appropriate colors for connections
-            const connectionColor = theme === 'light' ? '0, 0, 0' : '255, 255, 255';
-            const connectionOpacity = theme === 'light' 
-              ? 0.15 * (1 - distance / 100) // Much more visible in light theme
-              : 0.03 * (1 - distance / 100); // Less visible in dark theme
-            ctx.strokeStyle = `rgba(${connectionColor}, ${connectionOpacity})`;
-            ctx.lineWidth = theme === 'light' ? 0.6 : 0.3; // Thicker lines in light theme
+            ctx.strokeStyle = `rgba(${connectionColor}, ${connectionBaseOpacity * (1 - actualDistance / 100)})`;
+            ctx.lineWidth = lineWidth;
             ctx.stroke();
           }
-        });
-      });
+        }
+      }
 
       animationRef.current = requestAnimationFrame(animate);
     };

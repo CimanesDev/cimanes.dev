@@ -6,13 +6,20 @@ export function HeroSection() {
   const scrollToNext = () => {
     const nextSection = document.getElementById('about');
     if (nextSection) {
-      nextSection.scrollIntoView({ behavior: 'smooth' });
+      const navbarHeight = 80; // Height of the navbar + some padding
+      const elementPosition = nextSection.offsetTop - navbarHeight;
+      
+      window.scrollTo({
+        top: elementPosition,
+        behavior: 'smooth'
+      });
     }
   };
 
   const [isHomeVisible, setIsHomeVisible] = useState(false);
   const [isAnimationComplete, setIsAnimationComplete] = useState(false);
   const [showSubtitle, setShowSubtitle] = useState(false);
+  const [showArrow, setShowArrow] = useState(false);
 
   useEffect(() => {
     // Wait for the fade-in animation to complete (0.6s from CSS)
@@ -67,7 +74,11 @@ export function HeroSection() {
                 speed={150} 
                 delay={2000}
                 className="inline-block"
-                onComplete={() => setShowSubtitle(true)}
+                onComplete={() => {
+                  setShowSubtitle(true);
+                  // Show arrow after subtitle appears with a slight delay
+                  setTimeout(() => setShowArrow(true), 500);
+                }}
               />
             </h1>
             
@@ -80,11 +91,14 @@ export function HeroSection() {
           </div>
           
           {/* Bouncing scroll arrow - only show when animation is complete and home is visible */}
-          {isAnimationComplete && isHomeVisible && (
-            <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 animate-bounce z-50">
+          {isAnimationComplete && isHomeVisible && showArrow && (
+            <div className={`fixed bottom-0 left-1/2 transform -translate-x-1/2 z-50 transition-all duration-1000 ease-out ${
+              showArrow ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            }`}>
               <button
                 onClick={scrollToNext}
                 className="text-muted-foreground hover:text-primary transition-colors duration-300"
+                style={{ animation: 'smoothFloat 4s ease-in-out infinite' }}
                 aria-label="Scroll to next section"
               >
                 <svg

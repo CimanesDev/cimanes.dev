@@ -103,6 +103,35 @@
   html {
     scroll-behavior: smooth;
   }
+  
+  /* Performance optimizations */
+  * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  /* Optimize animations */
+  .animate-fade-in,
+  .animate-bounce {
+    will-change: transform, opacity;
+  }
+  
+  /* Optimize transforms */
+  .hover\:scale-105:hover,
+  .hover\:-translate-y-1:hover,
+  .hover\:-translate-y-2:hover {
+    will-change: transform;
+  }
+  
+  /* Custom smooth float animation for arrow */
+  @keyframes smoothFloat {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-6px);
+    }
+  }
 }
 
 @layer components {
