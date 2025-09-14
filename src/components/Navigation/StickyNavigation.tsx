@@ -21,15 +21,22 @@ export function StickyNavigation() {
         requestAnimationFrame(() => {
           const sections = navigationItems.map(item => item.id);
           let currentSection = null;
-          const navbarHeight = 80; // Same offset as scroll function
+          let minDistance = Infinity;
+          const viewportCenter = window.innerHeight / 2;
           
           sections.forEach(section => {
             const element = document.getElementById(section);
             if (element) {
               const rect = element.getBoundingClientRect();
-              // Check if section header is visible below the navbar
-              if (rect.top <= navbarHeight && rect.bottom > navbarHeight) {
-                currentSection = section;
+              const sectionCenter = rect.top + (rect.height / 2);
+              const distanceFromCenter = Math.abs(sectionCenter - viewportCenter);
+              
+              // Only consider sections that are at least partially visible
+              if (rect.bottom > 0 && rect.top < window.innerHeight) {
+                if (distanceFromCenter < minDistance) {
+                  minDistance = distanceFromCenter;
+                  currentSection = section;
+                }
               }
             }
           });

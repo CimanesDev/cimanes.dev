@@ -1,11 +1,11 @@
-import { Github, Linkedin, Download, Mail, Sun, Moon } from 'lucide-react';
+import { Github, Linkedin, Download, BookOpen, Sun, Moon } from 'lucide-react';
 import { useTheme } from '@/contexts/ThemeContext';
 
 const socialLinks = [
   { icon: Github, href: 'https://github.com/cimanesdev', label: 'GitHub' },
   { icon: Linkedin, href: 'https://linkedin.com/in/cimanesdev', label: 'LinkedIn' },
   { icon: Download, href: '/Josh Bradley Cimanes CV.pdf', label: 'Download CV', download: true },
-  { icon: Mail, href: 'mailto:jmcimanes@up.edu.ph', label: 'Email' },
+  { icon: BookOpen, href: '/blog', label: 'Blog' },
 ];
 
 export function SocialNavigation() {
@@ -19,8 +19,8 @@ export function SocialNavigation() {
             <a
               key={label}
               href={href}
-              target={download ? "_self" : "_blank"}
-              rel={download ? "" : "noopener noreferrer"}
+              target={download ? "_self" : (href.startsWith('/') ? "_self" : "_blank")}
+              rel={download ? "" : (href.startsWith('/') ? "" : "noopener noreferrer")}
               download={download ? "Josh_Cimanes_CV.pdf" : undefined}
               className="w-14 h-14 rounded-full bg-card border border-border flex items-center justify-center transition-all duration-500 ease-out hover:bg-primary hover:text-primary-foreground hover:scale-110 hover:shadow-lg hover:shadow-primary/25 group relative"
               aria-label={label}
@@ -61,8 +61,8 @@ export function MobileSocialNavigation() {
             <a
               key={label}
               href={href}
-              target={download ? "_self" : "_blank"}
-              rel={download ? "" : "noopener noreferrer"}
+              target={download ? "_self" : (href.startsWith('/') ? "_self" : "_blank")}
+              rel={download ? "" : (href.startsWith('/') ? "" : "noopener noreferrer")}
               download={download ? "Josh_Cimanes_CV.pdf" : undefined}
               className="w-9 h-9 rounded-full bg-card border border-border flex items-center justify-center transition-all duration-500 ease-out hover:bg-primary hover:text-primary-foreground hover:scale-110 hover:shadow-lg hover:shadow-primary/25"
               aria-label={label}

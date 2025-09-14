@@ -44,8 +44,8 @@ export function AchievementsSection() {
   ];
 
   return (
-    <section id="achievements" className="section-container">
-      <div className="section-content">
+    <section id="achievements" className="py-8 md:py-12 px-4 md:px-6">
+      <div className="max-w-6xl mx-auto w-full">
         <div className="text-left mb-4">
           <h2 className="text-2xl md:text-3xl font-bold mb-2">Achievements</h2>
         </div>
