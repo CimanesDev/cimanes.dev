@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { OptimizedImage } from '@/components/ui/optimized-image';
 import { ProjectCard } from '@/components/ProjectCard';
 import { useScrollAnimation } from '@/hooks/use-scroll-animation';
+import { useStaggeredAnimation } from '@/hooks/use-enhanced-scroll';
 
 export function ProjectsSection() {
   const [expandedProject, setExpandedProject] = useState<string | null>(null);
@@ -11,6 +12,7 @@ export function ProjectsSection() {
   
   const { ref: featuredRef, isVisible: featuredVisible } = useScrollAnimation({ delay: 100 });
   const { ref: projectsRef, isVisible: projectsVisible } = useScrollAnimation({ delay: 200 });
+  
   const projects = [
     {
       title: "EDC atbp",
@@ -22,7 +24,9 @@ export function ProjectsSection() {
       github: "https://github.com",
       demo: "https://edc-atbp.netlify.app",
       image: "/images/edc.png",
-      featured: true
+      featured: true,
+      date: "December 2024",
+      status: "completed"
     },
     {
       title: "KaagapAI",
@@ -33,7 +37,9 @@ export function ProjectsSection() {
       bgColor: "bg-purple-400/10",
       github: "https://github.com",
       demo: "https://kaagap-ai.netlify.app",
-      image: "/images/kaagapai.png"
+      image: "/images/kaagapai.png",
+      date: "May 2025",
+      status: "completed"
     },
     {
       title: "SalbaBida",
@@ -44,7 +50,9 @@ export function ProjectsSection() {
       bgColor: "bg-blue-400/10",
       github: "https://github.com",
       demo: "https://salbabida.vercel.app",
-      image: "/images/salbabida.png"
+      image: "/images/salbabida.png",
+      date: "February 2025",
+      status: "completed"
     },
     {
       title: "Quine-McCluskey Minimizer",
@@ -55,7 +63,9 @@ export function ProjectsSection() {
       bgColor: "bg-orange-400/10",
       github: "https://github.com",
       demo: "https://quinemccluskey-carocimanes.netlify.app",
-      image: "/images/quine.png"
+      image: "/images/quine.png",
+      date: "November 2024",
+      status: "completed"
     },
     {
       title: "HellWeekCoffee",
@@ -66,7 +76,9 @@ export function ProjectsSection() {
       bgColor: "bg-yellow-400/10",
       github: "https://github.com",
       demo: "https://demo.com",
-      image: "/images/placeholder.png"
+      image: "/images/placeholder.png",
+      date: "October 2024",
+      status: "completed"
     },
     {
       title: "Iskola",
@@ -77,7 +89,9 @@ export function ProjectsSection() {
       bgColor: "bg-blue-400/10",
       github: "https://github.com",
       demo: "https://demo.com",
-      image: "/images/placeholder.png"
+      image: "/images/placeholder.png",
+      date: "January 2025",
+      status: "in-progress"
     },
     {
       title: "BantAI",
@@ -88,7 +102,9 @@ export function ProjectsSection() {
       bgColor: "bg-red-400/10",
       github: "https://github.com",
       demo: "https://bantai.netlify.app",
-      image: "/images/bantai.png"
+      image: "/images/bantai.png",
+      date: "May 2025",
+      status: "completed"
     },
     {
       title: "Tetris Effect",
@@ -99,7 +115,9 @@ export function ProjectsSection() {
       bgColor: "bg-pink-400/10",
       github: "https://github.com",
       demo: "https://demo.com",
-      image: "/images/placeholder.png"
+      image: "/images/placeholder.png",
+      date: "September 2024",
+      status: "completed"
     },
     {
       title: "Jogoal",
@@ -110,9 +128,13 @@ export function ProjectsSection() {
       bgColor: "bg-indigo-400/10",
       github: "https://github.com",
       demo: "https://demo.com",
-      image: "/images/placeholder.png"
+      image: "/images/placeholder.png",
+      date: "March 2025",
+      status: "planned"
     }     
   ];
+
+  const { ref: projectCardsRef, visibleItems: projectCardsVisible } = useStaggeredAnimation(projects.length, 150);
 
   return (
     <section id="projects" className="section-container">
@@ -210,7 +232,10 @@ export function ProjectsSection() {
           }`}
         >
           {/* Projects Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+          <div 
+            ref={projectCardsRef}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
+          >
             {projects.slice(1).slice(currentPage * projectsPerPage, (currentPage + 1) * projectsPerPage).map((project, index) => {
               const isExpanded = expandedProject === project.title;
               

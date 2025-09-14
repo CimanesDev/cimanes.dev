@@ -7,10 +7,14 @@ import { ExperienceSection } from './Sections/ExperienceSection';
 import { ProjectsSection } from './Sections/ProjectsSection';
 import { AchievementsSection } from './Sections/AchievementsSection';
 import { ContactSection } from './Sections/ContactSection';
+import { ScrollProgress } from './ui/scroll-progress';
 
 export function Portfolio() {
   return (
     <div className="min-h-screen bg-background text-foreground">
+      {/* Scroll Progress Indicator */}
+      <ScrollProgress />
+      
       {/* Navigation Components */}
       <StickyNavigation />
       <SocialNavigation />

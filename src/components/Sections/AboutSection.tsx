@@ -1,27 +1,32 @@
 import { GraduationCap, Code, Trophy, Heart, Languages } from 'lucide-react';
 import StackIcon from 'tech-stack-icons';
 import { useScrollAnimation } from '@/hooks/use-scroll-animation';
+import { useStaggeredAnimation } from '@/hooks/use-enhanced-scroll';
+import { useMagneticCursor } from '@/hooks/use-magnetic-cursor';
 
 export function AboutSection() {
   const { ref: aboutRef, isVisible: aboutVisible } = useScrollAnimation({ delay: 100 });
   const { ref: skillsRef, isVisible: skillsVisible } = useScrollAnimation({ delay: 200 });
 
   const skills = [
-    { name: "HTML5", icon: "html5" },
-    { name: "CSS3", icon: "css3" },
-    { name: "TailwindCSS", icon: "tailwindcss" },
-    { name: "Python", icon: "python" },
-    { name: "C#", icon: "c#" },
-    { name: "TypeScript", icon: "typescript" },
-    { name: "React", icon: "react" },
-    { name: "ShadcnUI", icon: "shadcnui" },
-    { name: "Git", icon: "git" },
-    { name: "GitHub", icon: "github" },
-    { name: "GitLab", icon: "gitlab" },
-    { name: "Firebase", icon: "firebase" },
-    { name: "Supabase", icon: "supabase" },
-    { name: "PostgreSQL", icon: "postgresql" }
+    { name: "HTML5", icon: "html5", level: 95, color: "orange" },
+    { name: "CSS3", icon: "css3", level: 90, color: "blue" },
+    { name: "TailwindCSS", icon: "tailwindcss", level: 95, color: "blue" },
+    { name: "Python", icon: "python", level: 80, color: "green" },
+    { name: "C#", icon: "c#", level: 75, color: "purple" },
+    { name: "TypeScript", icon: "typescript", level: 85, color: "blue" },
+    { name: "React", icon: "react", level: 90, color: "blue" },
+    { name: "ShadcnUI", icon: "shadcnui", level: 85, color: "primary" },
+    { name: "Git", icon: "git", level: 80, color: "orange" },
+    { name: "GitHub", icon: "github", level: 85, color: "primary" },
+    { name: "GitLab", icon: "gitlab", level: 75, color: "orange" },
+    { name: "Firebase", icon: "firebase", level: 80, color: "orange" },
+    { name: "Supabase", icon: "supabase", level: 70, color: "green" },
+    { name: "PostgreSQL", icon: "postgresql", level: 65, color: "blue" }
   ];
+
+  const { ref: skillCardsRef, visibleItems: skillCardsVisible } = useStaggeredAnimation(skills.length, 100);
+  const magneticRef = useMagneticCursor({ strength: 0.2 });
 
   const highlights = [
     {
@@ -135,22 +140,29 @@ export function AboutSection() {
             skillsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
         >
-          <div className="text-left mb-4">
+          <div className="text-left mb-6">
             <h3 className="text-xl md:text-2xl font-bold mb-2">Skills</h3>
           </div>
           
-          <div className="grid grid-cols-4 md:grid-cols-7 gap-4 md:gap-3">
+          {/* Skill Cards Grid */}
+          <div 
+            ref={skillCardsRef}
+            className="grid grid-cols-4 md:grid-cols-7 gap-4 md:gap-3 mb-8"
+          >
             {skills.map((skill, index) => (
               <div 
                 key={skill.name}
-                className="group bg-gradient-to-br from-white/5 via-white/5 to-white/10 backdrop-blur-xl border border-white/10 rounded-xl p-3 shadow-xl hover:shadow-2xl transition-all duration-300 hover:border-white/20 hover:-translate-y-1 cursor-pointer animate-fade-in"
-                style={{ animationDelay: `${index * 0.05}s` }}
+                ref={index === 0 ? magneticRef : undefined}
+                className={`group bg-gradient-to-br from-white/5 via-white/5 to-white/10 backdrop-blur-xl border border-white/10 rounded-xl p-3 shadow-xl hover:shadow-2xl transition-all duration-300 hover:border-white/20 hover:-translate-y-1 cursor-pointer ${
+                  skillCardsVisible[index] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+                }`}
+                style={{ transitionDelay: `${index * 0.05}s` }}
               >
                 <div className="flex flex-col items-center text-center space-y-2">
                   {/* Icon */}
-                <div className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center group-hover:scale-110 group-hover:bg-primary/20 transition-all duration-300 ease-out">
-                  <StackIcon name={skill.icon} className="w-6 h-6 group-hover:text-primary transition-colors duration-300" />
-                </div>
+                  <div className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center group-hover:scale-110 group-hover:bg-primary/20 transition-all duration-300 ease-out">
+                    <StackIcon name={skill.icon} className="w-6 h-6 group-hover:text-primary transition-colors duration-300" />
+                  </div>
                   
                   {/* Name */}
                   <h4 className="text-xs font-medium text-foreground/90 group-hover:text-foreground transition-colors">
@@ -160,6 +172,7 @@ export function AboutSection() {
               </div>
             ))}
           </div>
+
         </div>
       </div>
     </section>

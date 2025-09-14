@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react';
+import { TypingAnimation } from '@/components/ui/typing-animation';
+import { ParticleBackground } from '@/components/ui/particle-background';
 
 export function HeroSection() {
   const scrollToNext = () => {
@@ -10,6 +12,7 @@ export function HeroSection() {
 
   const [isHomeVisible, setIsHomeVisible] = useState(false);
   const [isAnimationComplete, setIsAnimationComplete] = useState(false);
+  const [showSubtitle, setShowSubtitle] = useState(false);
 
   useEffect(() => {
     // Wait for the fade-in animation to complete (0.6s from CSS)
@@ -46,8 +49,9 @@ export function HeroSection() {
   }, []);
 
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center px-4 md:px-6 py-16 md:py-0">
-      <div className="max-w-6xl mx-auto w-full">
+    <section id="home" className="min-h-screen flex items-center justify-center px-4 md:px-6 py-16 md:py-0 relative overflow-hidden">
+      <ParticleBackground />
+      <div className="max-w-6xl mx-auto w-full relative z-10">
         <div className="animate-fade-in relative flex items-center justify-center min-h-[80vh] md:h-full">
           {/* Container for the name and positioning elements */}
           <div className="relative">
@@ -56,13 +60,21 @@ export function HeroSection() {
               Hi, I'm
             </p>
             
-            {/* Josh Cimanes centered */}
+            {/* Josh Cimanes centered with typing animation */}
             <h1 className="hero-text-simple text-center text-5xl md:text-7xl lg:text-8xl">
-              Josh Cimanes
+              <TypingAnimation 
+                text="Josh Cimanes" 
+                speed={150} 
+                delay={2000}
+                className="inline-block"
+                onComplete={() => setShowSubtitle(true)}
+              />
             </h1>
             
-            {/* Frontend Developer positioned bottom right of name */}
-            <p className="absolute -bottom-8 md:-bottom-12 -right-2 md:-right-8 text-xs md:text-sm lg:text-lg xl:text-xl text-muted-foreground font-medium tracking-wide">
+            {/* Frontend Developer positioned bottom right of name - only shows after typing completes */}
+            <p className={`absolute -bottom-8 md:-bottom-12 -right-2 md:-right-8 text-xs md:text-sm lg:text-lg xl:text-xl text-muted-foreground font-medium tracking-wide transition-opacity duration-1000 ${
+              showSubtitle ? 'opacity-100' : 'opacity-0'
+            }`}>
               Front-End Developer
             </p>
           </div>
