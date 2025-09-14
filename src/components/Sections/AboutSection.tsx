@@ -1,6 +1,24 @@
 import { GraduationCap, Code, Trophy, Heart, Languages } from 'lucide-react';
+import StackIcon from 'tech-stack-icons';
 
 export function AboutSection() {
+  const skills = [
+    { name: "HTML5", icon: "html5" },
+    { name: "CSS3", icon: "css3" },
+    { name: "TailwindCSS", icon: "tailwindcss" },
+    { name: "Python", icon: "python" },
+    { name: "C#", icon: "c#" },
+    { name: "TypeScript", icon: "typescript" },
+    { name: "React", icon: "react" },
+    { name: "ShadcnUI", icon: "shadcnui" },
+    { name: "Git", icon: "git" },
+    { name: "GitHub", icon: "github" },
+    { name: "GitLab", icon: "gitlab" },
+    { name: "Firebase", icon: "firebase" },
+    { name: "Supabase", icon: "supabase" },
+    { name: "PostgreSQL", icon: "postgresql" }
+  ];
+
   const highlights = [
     {
       icon: GraduationCap,
@@ -98,6 +116,35 @@ export function AboutSection() {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+
+        {/* Skills Subsection */}
+        <div className="mt-8">
+          <div className="text-left mb-2">
+            <h3 className="text-xl md:text-2xl font-bold mb-1">Skills</h3>
+          </div>
+          
+          <div className="grid grid-cols-7 gap-3">
+            {skills.map((skill, index) => (
+              <div 
+                key={skill.name}
+                className="group bg-gradient-to-br from-white/5 via-white/5 to-white/10 backdrop-blur-xl border border-white/10 rounded-xl p-3 shadow-xl hover:shadow-2xl transition-all duration-300 hover:border-white/20 hover:-translate-y-1 cursor-pointer animate-fade-in"
+                style={{ animationDelay: `${index * 0.05}s` }}
+              >
+                <div className="flex flex-col items-center text-center space-y-2">
+                  {/* Icon */}
+                  <div className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                    <StackIcon name={skill.icon} className="w-6 h-6" />
+                  </div>
+                  
+                  {/* Name */}
+                  <h4 className="text-xs font-medium text-foreground/90 group-hover:text-foreground transition-colors">
+                    {skill.name}
+                  </h4>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>
