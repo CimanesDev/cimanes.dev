@@ -1,7 +1,11 @@
 import { GraduationCap, Code, Trophy, Heart, Languages } from 'lucide-react';
 import StackIcon from 'tech-stack-icons';
+import { useScrollAnimation } from '@/hooks/use-scroll-animation';
 
 export function AboutSection() {
+  const { ref: aboutRef, isVisible: aboutVisible } = useScrollAnimation({ delay: 100 });
+  const { ref: skillsRef, isVisible: skillsVisible } = useScrollAnimation({ delay: 200 });
+
   const skills = [
     { name: "HTML5", icon: "html5" },
     { name: "CSS3", icon: "css3" },
@@ -49,7 +53,12 @@ export function AboutSection() {
           <h2 className="text-2xl md:text-3xl font-bold mb-2">About Me</h2>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
+        <div 
+          ref={aboutRef}
+          className={`grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 transition-all duration-700 ${
+            aboutVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+          }`}
+        >
           {/* Left side - Description */}
           <div className="flex flex-col h-full">
             <div className="space-y-4 flex-shrink-0">
@@ -120,7 +129,12 @@ export function AboutSection() {
         </div>
 
         {/* Skills Subsection */}
-        <div className="mt-8">
+        <div 
+          ref={skillsRef}
+          className={`mt-8 transition-all duration-700 ${
+            skillsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+          }`}
+        >
           <div className="text-left mb-4">
             <h3 className="text-xl md:text-2xl font-bold mb-2">Skills</h3>
           </div>
@@ -134,9 +148,9 @@ export function AboutSection() {
               >
                 <div className="flex flex-col items-center text-center space-y-2">
                   {/* Icon */}
-                  <div className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                    <StackIcon name={skill.icon} className="w-6 h-6" />
-                  </div>
+                <div className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center group-hover:scale-110 group-hover:bg-primary/20 transition-all duration-300 ease-out">
+                  <StackIcon name={skill.icon} className="w-6 h-6 group-hover:text-primary transition-colors duration-300" />
+                </div>
                   
                   {/* Name */}
                   <h4 className="text-xs font-medium text-foreground/90 group-hover:text-foreground transition-colors">

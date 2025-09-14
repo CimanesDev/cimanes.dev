@@ -28,7 +28,7 @@ export const ProjectCard = memo(({ project, index, isExpanded, onToggle }: Proje
   
   return (
     <div 
-      className="group bg-gradient-to-br from-white/5 via-white/5 to-white/10 backdrop-blur-xl border border-white/10 rounded-xl p-4 md:p-6 shadow-xl hover:shadow-2xl transition-all duration-300 hover:border-white/20 hover:-translate-y-1 cursor-pointer animate-fade-in"
+      className="group bg-gradient-to-br from-white/5 via-white/5 to-white/10 backdrop-blur-xl border border-white/10 rounded-xl p-4 md:p-6 shadow-xl hover:shadow-2xl transition-all duration-500 ease-out hover:border-white/20 hover:-translate-y-2 hover:scale-[1.02] cursor-pointer animate-fade-in"
       style={{ animationDelay: `${index * 0.1}s` }}
       onClick={onToggle}
     >

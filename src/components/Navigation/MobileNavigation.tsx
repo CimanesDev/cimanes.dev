@@ -24,14 +24,14 @@ export function MobileNavigation() {
   return (
     <>
       {/* Mobile Menu Button */}
-      <div className="fixed top-4 left-4 z-50 lg:hidden">
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          className="w-16 h-16 bg-white/5 backdrop-blur-xl border border-white/10 rounded-full flex items-center justify-center text-foreground hover:bg-white/20 hover:scale-110 transition-all duration-300 shadow-2xl"
+       <div className="fixed top-4 left-4 z-50 lg:hidden">
+         <button
+           onClick={() => setIsOpen(!isOpen)}
+               className="w-14 h-14 bg-white/5 backdrop-blur-xl border border-white/10 rounded-full flex items-center justify-center text-foreground hover:bg-white/20 hover:scale-110 transition-all duration-500 ease-out shadow-2xl hover:shadow-3xl"
           style={{ boxShadow: '0 0 0 1px hsl(var(--border)), 0 0 10px hsl(var(--glow-color) / 0.2), 0 0 20px hsl(var(--glow-color) / 0.1)' }}
           aria-label="Toggle navigation menu"
         >
-          {isOpen ? <X size={22} /> : <Menu size={22} />}
+           {isOpen ? <X size={20} /> : <Menu size={20} />}
         </button>
       </div>
 
@@ -50,7 +50,7 @@ export function MobileNavigation() {
                   <button
                     key={id}
                     onClick={() => scrollToSection(id)}
-                    className="flex items-center gap-3 px-3 py-3 rounded-lg text-left text-foreground hover:bg-white/10 transition-all duration-300 group"
+                        className="flex items-center gap-3 px-3 py-3 rounded-lg text-left text-foreground hover:bg-white/10 transition-all duration-500 ease-out group hover:scale-[1.02]"
                     style={{ animationDelay: `${index * 0.05}s` }}
                   >
                     <Icon size={18} className="group-hover:text-primary transition-colors duration-300" />

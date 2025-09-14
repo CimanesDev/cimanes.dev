@@ -1,6 +1,8 @@
 import { Mail, MapPin, Github, Linkedin } from 'lucide-react';
+import { useScrollAnimation } from '@/hooks/use-scroll-animation';
 
 export function ContactSection() {
+  const { ref: contactRef, isVisible: contactVisible } = useScrollAnimation({ delay: 100 });
 
   return (
     <section id="contact" className="flex items-start justify-center px-4 md:px-6 py-8" style={{ marginTop: '2rem', marginBottom: '6rem' }}>
@@ -9,9 +11,14 @@ export function ContactSection() {
           <h2 className="text-2xl md:text-3xl font-bold mb-2">Get In Touch</h2>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
+        <div 
+          ref={contactRef}
+          className={`grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 transition-all duration-700 ${
+            contactVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+          }`}
+        >
           {/* Left Card - Contact Information */}
-          <div className="bg-gradient-to-br from-white/10 via-white/5 to-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-6 shadow-2xl hover:shadow-3xl transition-all duration-300 hover:border-white/30 hover:-translate-y-1 animate-fade-in">
+            <div className="bg-gradient-to-br from-white/10 via-white/5 to-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-6 shadow-2xl hover:shadow-3xl transition-all duration-500 ease-out hover:border-white/30 hover:-translate-y-2 hover:scale-[1.02] animate-fade-in">
             <h3 className="text-xl font-bold mb-4 text-foreground">Contact Information</h3>
             <div className="space-y-3">
               <div className="flex items-center gap-3">
@@ -86,7 +93,7 @@ export function ContactSection() {
           </div>
 
           {/* Right Card - Get in Touch */}
-          <div className="bg-gradient-to-br from-white/10 via-white/5 to-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-6 shadow-2xl hover:shadow-3xl transition-all duration-300 hover:border-white/30 hover:-translate-y-1 animate-fade-in" style={{ animationDelay: '0.1s' }}>
+          <div className="bg-gradient-to-br from-white/10 via-white/5 to-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-6 shadow-2xl hover:shadow-3xl transition-all duration-500 ease-out hover:border-white/30 hover:-translate-y-2 hover:scale-[1.02] animate-fade-in" style={{ animationDelay: '0.1s' }}>
             <h3 className="text-xl font-bold mb-2 text-foreground">Get in Touch</h3>
             <p className="text-foreground/70 mb-6 leading-relaxed">
               I'm always open to discussing new projects, creative ideas, or opportunities to be part of your visions.

@@ -22,7 +22,7 @@ export function SocialNavigation() {
               target={download ? "_self" : "_blank"}
               rel={download ? "" : "noopener noreferrer"}
               download={download ? "Josh_Cimanes_CV.pdf" : undefined}
-              className="w-14 h-14 rounded-full bg-card border border-border flex items-center justify-center transition-all duration-300 hover:bg-primary hover:text-primary-foreground hover:scale-110 hover:shadow-lg hover:shadow-primary/25 group relative"
+              className="w-14 h-14 rounded-full bg-card border border-border flex items-center justify-center transition-all duration-500 ease-out hover:bg-primary hover:text-primary-foreground hover:scale-110 hover:shadow-lg hover:shadow-primary/25 group relative"
               aria-label={label}
               title={label}
             >
@@ -39,7 +39,7 @@ export function SocialNavigation() {
           
           <button
             onClick={toggleTheme}
-            className="w-14 h-14 rounded-full bg-card border border-border flex items-center justify-center transition-all duration-300 hover:bg-primary hover:text-primary-foreground hover:scale-110 hover:shadow-lg hover:shadow-primary/25"
+            className="w-14 h-14 rounded-full bg-card border border-border flex items-center justify-center transition-all duration-500 ease-out hover:bg-primary hover:text-primary-foreground hover:scale-110 hover:shadow-lg hover:shadow-primary/25"
             aria-label="Toggle theme"
           >
             {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
@@ -55,8 +55,8 @@ export function MobileSocialNavigation() {
 
   return (
     <nav className="fixed top-4 right-4 z-50 lg:hidden">
-      <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-full px-4 py-3 shadow-2xl" style={{ boxShadow: '0 0 0 1px hsl(var(--border)), 0 0 10px hsl(var(--glow-color) / 0.2), 0 0 20px hsl(var(--glow-color) / 0.1)' }}>
-        <div className="flex items-center gap-3">
+      <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-full px-2 py-2 shadow-2xl" style={{ boxShadow: '0 0 0 1px hsl(var(--border)), 0 0 10px hsl(var(--glow-color) / 0.2), 0 0 20px hsl(var(--glow-color) / 0.1)' }}>
+        <div className="flex items-center gap-1.5">
           {socialLinks.map(({ icon: Icon, href, label, download }) => (
             <a
               key={label}
@@ -64,22 +64,22 @@ export function MobileSocialNavigation() {
               target={download ? "_self" : "_blank"}
               rel={download ? "" : "noopener noreferrer"}
               download={download ? "Josh_Cimanes_CV.pdf" : undefined}
-              className="w-10 h-10 rounded-full bg-card border border-border flex items-center justify-center transition-all duration-300 hover:bg-primary hover:text-primary-foreground hover:scale-110 hover:shadow-lg hover:shadow-primary/25"
+              className="w-9 h-9 rounded-full bg-card border border-border flex items-center justify-center transition-all duration-500 ease-out hover:bg-primary hover:text-primary-foreground hover:scale-110 hover:shadow-lg hover:shadow-primary/25"
               aria-label={label}
               title={label}
             >
-              <Icon size={18} />
+              <Icon size={17} />
             </a>
           ))}
           
-          <div className="w-px h-6 bg-border mx-1" />
+          <div className="w-px h-5 bg-border mx-0.5" />
           
           <button
             onClick={toggleTheme}
-            className="w-10 h-10 rounded-full bg-card border border-border flex items-center justify-center transition-all duration-300 hover:bg-primary hover:text-primary-foreground hover:scale-110 hover:shadow-lg hover:shadow-primary/25"
+            className="w-9 h-9 rounded-full bg-card border border-border flex items-center justify-center transition-all duration-500 ease-out hover:bg-primary hover:text-primary-foreground hover:scale-110 hover:shadow-lg hover:shadow-primary/25"
             aria-label="Toggle theme"
           >
-            {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
+            {theme === 'dark' ? <Sun size={17} /> : <Moon size={17} />}
           </button>
         </div>
       </div>

@@ -1,5 +1,9 @@
 
+import { useScrollAnimation } from '@/hooks/use-scroll-animation';
+
 export function AchievementsSection() {
+  const { ref: achievementsRef, isVisible: achievementsVisible } = useScrollAnimation({ delay: 100 });
+
   const achievements = [
     {
       title: "Ateneo Blue Hacks 2025 - Champion",
@@ -46,12 +50,17 @@ export function AchievementsSection() {
           <h2 className="text-2xl md:text-3xl font-bold mb-2">Achievements</h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+        <div 
+          ref={achievementsRef}
+          className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 transition-all duration-700 ${
+            achievementsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+          }`}
+        >
           {achievements.map((achievement, index) => {
             return (
               <div 
                 key={achievement.title}
-                className="group bg-gradient-to-br from-white/5 via-white/5 to-white/10 backdrop-blur-xl border border-white/10 rounded-xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 hover:border-white/20 hover:-translate-y-1"
+                className="group bg-gradient-to-br from-white/5 via-white/5 to-white/10 backdrop-blur-xl border border-white/10 rounded-xl p-6 shadow-xl hover:shadow-2xl transition-all duration-500 ease-out hover:border-white/20 hover:-translate-y-2 hover:scale-[1.02]"
               >
                 <div className="mb-4">
                   <h3 className="text-lg font-bold mb-2 text-foreground leading-tight">{achievement.title}</h3>

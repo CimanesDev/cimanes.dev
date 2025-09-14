@@ -1,6 +1,10 @@
 import { Calendar, MapPin, Code, Briefcase, Users, GraduationCap } from 'lucide-react';
+import { useScrollAnimation } from '@/hooks/use-scroll-animation';
 
 export function ExperienceSection() {
+  const { ref: expRef, isVisible: expVisible } = useScrollAnimation({ delay: 100 });
+  const { ref: orgRef, isVisible: orgVisible } = useScrollAnimation({ delay: 200 });
+
   const experiences = [
     {
       title: "Lead Developer",
@@ -78,13 +82,18 @@ export function ExperienceSection() {
           <h2 className="text-2xl md:text-3xl font-bold mb-2">Experience</h2>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
+        <div 
+          ref={expRef}
+          className={`grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 transition-all duration-700 ${
+            expVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+          }`}
+        >
           {experiences.map((exp, index) => {
             const Icon = getTypeIcon(exp.type);
             return (
               <div 
                 key={index}
-                className="bg-gradient-to-br from-white/10 via-white/5 to-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-6 shadow-2xl hover:shadow-3xl transition-all duration-300 hover:border-white/30 hover:-translate-y-1 animate-fade-in"
+                className="bg-gradient-to-br from-white/10 via-white/5 to-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-6 shadow-2xl hover:shadow-3xl transition-all duration-500 ease-out hover:border-white/30 hover:-translate-y-2 hover:scale-[1.02] animate-fade-in"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <div className="flex items-start gap-4 h-full">
@@ -116,7 +125,12 @@ export function ExperienceSection() {
         </div>
 
         {/* Organizations Subsection */}
-        <div className="mt-8">
+        <div 
+          ref={orgRef}
+          className={`mt-8 transition-all duration-700 ${
+            orgVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+          }`}
+        >
           <div className="text-left mb-4">
             <h3 className="text-xl md:text-2xl font-bold mb-2">Organizations</h3>
           </div>
@@ -128,7 +142,7 @@ export function ExperienceSection() {
               return (
                 <div 
                   key={index}
-                  className="bg-gradient-to-br from-white/10 via-white/5 to-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-6 shadow-2xl hover:shadow-3xl transition-all duration-300 hover:border-white/30 hover:-translate-y-1 animate-fade-in"
+                  className="bg-gradient-to-br from-white/10 via-white/5 to-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-6 shadow-2xl hover:shadow-3xl transition-all duration-500 ease-out hover:border-white/30 hover:-translate-y-2 hover:scale-[1.02] animate-fade-in"
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
                   <div className="flex items-start gap-4 h-full">
@@ -165,7 +179,7 @@ export function ExperienceSection() {
             return (
               <div 
                 key={index}
-                className="bg-gradient-to-br from-white/10 via-white/5 to-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-6 shadow-2xl hover:shadow-3xl transition-all duration-300 hover:border-white/30 hover:-translate-y-1 animate-fade-in"
+                className="bg-gradient-to-br from-white/10 via-white/5 to-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-6 shadow-2xl hover:shadow-3xl transition-all duration-500 ease-out hover:border-white/30 hover:-translate-y-2 hover:scale-[1.02] animate-fade-in"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <div className="flex items-start gap-4 h-full">

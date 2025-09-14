@@ -2,11 +2,15 @@ import { ExternalLink, Github, Code2, Brain, ShoppingCart, Calendar, ChevronDown
 import { useState } from 'react';
 import { OptimizedImage } from '@/components/ui/optimized-image';
 import { ProjectCard } from '@/components/ProjectCard';
+import { useScrollAnimation } from '@/hooks/use-scroll-animation';
 
 export function ProjectsSection() {
   const [expandedProject, setExpandedProject] = useState<string | null>(null);
   const [currentPage, setCurrentPage] = useState(0);
   const projectsPerPage = 3;
+  
+  const { ref: featuredRef, isVisible: featuredVisible } = useScrollAnimation({ delay: 100 });
+  const { ref: projectsRef, isVisible: projectsVisible } = useScrollAnimation({ delay: 200 });
   const projects = [
     {
       title: "EDC atbp",
@@ -118,11 +122,16 @@ export function ProjectsSection() {
         </div>
 
         {/* Featured Project - Compact Showcase */}
-        <div className="mb-8">
+        <div 
+          ref={featuredRef}
+          className={`mb-8 transition-all duration-700 ${
+            featuredVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+          }`}
+        >
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 items-center">
             {/* Left: Project Mockup/Showcase */}
             <div className="order-2 lg:order-1">
-              <div className="bg-gradient-to-br from-white/10 via-white/5 to-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-3 shadow-2xl hover:shadow-3xl transition-all duration-300 hover:border-white/30 hover:-translate-y-1 animate-fade-in">
+              <div className="bg-gradient-to-br from-white/10 via-white/5 to-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-3 shadow-2xl hover:shadow-3xl transition-all duration-500 ease-out hover:border-white/30 hover:-translate-y-2 hover:scale-[1.02] animate-fade-in">
                 {/* Browser-like header */}
                 <div className="flex items-center gap-2 mb-2 pb-2 border-b border-white/10">
                   <div className="flex gap-1">
@@ -194,7 +203,12 @@ export function ProjectsSection() {
         </div>
 
         {/* Other Projects - Paginated Grid */}
-        <div className="relative">
+        <div 
+          ref={projectsRef}
+          className={`relative transition-all duration-700 ${
+            projectsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+          }`}
+        >
           {/* Projects Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {projects.slice(1).slice(currentPage * projectsPerPage, (currentPage + 1) * projectsPerPage).map((project, index) => {
