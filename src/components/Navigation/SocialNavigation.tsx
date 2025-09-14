@@ -1,5 +1,5 @@
 import { Github, Linkedin, Download, Mail, Sun, Moon } from 'lucide-react';
-import { useState } from 'react';
+import { useTheme } from '@/contexts/ThemeContext';
 
 const socialLinks = [
   { icon: Github, href: 'https://github.com/cimanesdev', label: 'GitHub' },
@@ -9,12 +9,7 @@ const socialLinks = [
 ];
 
 export function SocialNavigation() {
-  const [isDark, setIsDark] = useState(true);
-
-  const toggleTheme = () => {
-    setIsDark(!isDark);
-    // In a real app, you'd implement actual theme switching here
-  };
+  const { theme, toggleTheme } = useTheme();
 
   return (
     <nav className="fixed right-8 top-1/2 -translate-y-1/2 z-50 hidden lg:block">
@@ -47,7 +42,7 @@ export function SocialNavigation() {
             className="social-button"
             aria-label="Toggle theme"
           >
-            {isDark ? <Sun size={18} /> : <Moon size={18} />}
+            {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
           </button>
         </div>
       </div>
@@ -56,12 +51,7 @@ export function SocialNavigation() {
 }
 
 export function MobileSocialNavigation() {
-  const [isDark, setIsDark] = useState(true);
-
-  const toggleTheme = () => {
-    setIsDark(!isDark);
-    // In a real app, you'd implement actual theme switching here
-  };
+  const { theme, toggleTheme } = useTheme();
 
   return (
     <nav className="fixed top-4 left-1/2 -translate-x-1/2 z-50 lg:hidden">
@@ -89,7 +79,7 @@ export function MobileSocialNavigation() {
             className="social-button"
             aria-label="Toggle theme"
           >
-            {isDark ? <Sun size={18} /> : <Moon size={18} />}
+            {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
           </button>
         </div>
       </div>

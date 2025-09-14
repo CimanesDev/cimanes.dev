@@ -1,5 +1,7 @@
 import { ExternalLink, Github, Code2, Brain, ShoppingCart, Calendar, ChevronDown, ChevronUp, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useState } from 'react';
+import { OptimizedImage } from '@/components/ui/optimized-image';
+import { ProjectCard } from '@/components/ProjectCard';
 
 export function ProjectsSection() {
   const [expandedProject, setExpandedProject] = useState<string | null>(null);
@@ -134,11 +136,12 @@ export function ProjectsSection() {
                 </div>
                 
                 {/* Project content area */}
-                <div className="bg-gradient-to-br from-primary/5 to-primary/10 rounded-xl p-2 min-h-[100px] overflow-hidden">
-                  <img 
+                <div className="bg-gradient-to-br from-primary/5 to-primary/10 rounded-xl p-2 min-h-[100px] overflow-hidden flex items-center justify-center">
+                  <OptimizedImage 
                     src={projects[0].image} 
                     alt={`${projects[0].title} screenshot`}
                     className="w-full h-full object-cover rounded-lg"
+                    priority={true}
                   />
                 </div>
               </div>
@@ -196,82 +199,15 @@ export function ProjectsSection() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
             {projects.slice(1).slice(currentPage * projectsPerPage, (currentPage + 1) * projectsPerPage).map((project, index) => {
               const isExpanded = expandedProject === project.title;
-              const hasDemo = project.demo && project.demo !== "https://demo.com";
-              const hasImage = project.image && !project.image.includes("placeholder");
               
               return (
-                <div 
+                <ProjectCard
                   key={project.title}
-                  className="group bg-gradient-to-br from-white/5 via-white/5 to-white/10 backdrop-blur-xl border border-white/10 rounded-xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 hover:border-white/20 hover:-translate-y-1 cursor-pointer animate-fade-in"
-                  style={{ animationDelay: `${index * 0.1}s` }}
-                  onClick={() => setExpandedProject(isExpanded ? null : project.title)}
-                >
-                  {/* Project Image */}
-                  {hasImage ? (
-                    <div className="mb-4 overflow-hidden rounded-lg">
-                      <img 
-                        src={project.image} 
-                        alt={`${project.title} screenshot`}
-                        className="w-full h-32 object-cover transition-transform duration-300 group-hover:scale-105"
-                      />
-                    </div>
-                  ) : (
-                    <div className="mb-4 bg-gradient-to-br from-white/10 to-white/5 rounded-lg h-32 flex items-center justify-center">
-                      <div className="text-center">
-                        <div className="w-12 h-12 bg-white/20 rounded-xl mx-auto mb-2 flex items-center justify-center">
-                          {(() => {
-                            const Icon = project.icon;
-                            return <Icon className="text-white/60" size={24} />;
-                          })()}
-                        </div>
-                        <p className="text-xs text-white/60">No preview available</p>
-                      </div>
-                    </div>
-                  )}
-
-                  <div className="flex items-center justify-between mb-4">
-                    <h4 className="text-lg font-bold">{project.title}</h4>
-                    {isExpanded ? (
-                      <ChevronUp className="text-primary" size={20} />
-                    ) : (
-                      <ChevronDown className="text-primary" size={20} />
-                    )}
-                  </div>
-
-                  <p className="text-sm text-foreground/80 mb-4 leading-relaxed">
-                    {isExpanded ? project.description : `${project.description.substring(0, 120)}...`}
-                  </p>
-
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {project.tech.slice(0, isExpanded ? project.tech.length : 3).map((tech) => (
-                      <span 
-                        key={tech}
-                        className="px-2 py-1 bg-primary/10 text-primary rounded-md text-xs font-medium"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                    {!isExpanded && project.tech.length > 3 && (
-                      <span className="px-2 py-1 bg-white/10 text-foreground/60 rounded-md text-xs">
-                        +{project.tech.length - 3}
-                      </span>
-                    )}
-                  </div>
-
-                  {hasDemo && (
-                    <div className="flex gap-2">
-                      <a
-                        href={project.demo}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="w-full px-3 py-2 bg-primary/10 text-primary rounded-lg text-sm font-medium hover:bg-primary/20 transition-colors text-center"
-                        onClick={(e) => e.stopPropagation()}
-                      >
-                        Demo
-                      </a>
-                    </div>
-                  )}
-                </div>
+                  project={project}
+                  index={index}
+                  isExpanded={isExpanded}
+                  onToggle={() => setExpandedProject(isExpanded ? null : project.title)}
+                />
               );
             })}
           </div>

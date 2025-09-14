@@ -9,24 +9,39 @@ export function HeroSection() {
   };
 
   const [isHomeVisible, setIsHomeVisible] = useState(false);
+  const [isAnimationComplete, setIsAnimationComplete] = useState(false);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setIsHomeVisible(entry.isIntersecting);
-      },
-      { threshold: 0.5 }
-    );
+    // Wait for the fade-in animation to complete (0.6s from CSS)
+    const animationTimer = setTimeout(() => {
+      setIsAnimationComplete(true);
+    }, 700); // Slightly longer than the 0.6s animation
 
-    const homeSection = document.getElementById('home');
-    if (homeSection) {
+    // Then set up the intersection observer
+    const observerTimer = setTimeout(() => {
+      const homeSection = document.getElementById('home');
+      if (!homeSection) return;
+
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          setIsHomeVisible(entry.isIntersecting);
+        },
+        { 
+          threshold: 0.5,
+          rootMargin: '0px 0px 0px 0px'
+        }
+      );
+
       observer.observe(homeSection);
-    }
+
+      return () => {
+        observer.unobserve(homeSection);
+      };
+    }, 800); // Wait for animation + a bit more
 
     return () => {
-      if (homeSection) {
-        observer.unobserve(homeSection);
-      }
+      clearTimeout(animationTimer);
+      clearTimeout(observerTimer);
     };
   }, []);
 
@@ -52,8 +67,8 @@ export function HeroSection() {
             </p>
           </div>
           
-          {/* Bouncing scroll arrow - only show on home page */}
-          {isHomeVisible && (
+          {/* Bouncing scroll arrow - only show when animation is complete and home is visible */}
+          {isAnimationComplete && isHomeVisible && (
             <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 animate-bounce z-50">
               <button
                 onClick={scrollToNext}

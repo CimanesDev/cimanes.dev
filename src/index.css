@@ -8,7 +8,7 @@
 
 @layer base {
   :root {
-    /* Portfolio Theme - Dark Navy with Orange Accents */
+    /* Portfolio Theme - Dark Navy with Orange Accents (Default) */
     --background: 218 25% 12%;              /* Dark navy background */
     --foreground: 0 0% 98%;                 /* Pure white text */
     
@@ -50,6 +50,44 @@
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-bounce: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   }
+
+  /* Light Theme - Soft Cream Theme */
+  .light {
+    --background: 40 15% 96%;               /* Very soft cream background */
+    --foreground: 220 15% 25%;              /* Softer dark text */
+    
+    --card: 40 12% 94%;                     /* Subtle cream for cards */
+    --card-foreground: 220 15% 25%;
+    
+    --popover: 40 12% 94%;
+    --popover-foreground: 220 15% 25%;
+    
+    --primary: 25 95% 53%;                  /* Keep orange accent */
+    --primary-foreground: 0 0% 98%;
+    
+    --secondary: 40 8% 90%;                 /* Very light cream for secondary */
+    --secondary-foreground: 220 15% 35%;
+    
+    --muted: 40 6% 88%;                     /* Very muted cream backgrounds */
+    --muted-foreground: 220 10% 55%;
+    
+    --accent: 25 95% 53%;                   /* Orange accent */
+    --accent-foreground: 0 0% 98%;
+    
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    
+    --border: 40 8% 85%;                    /* Very light cream borders */
+    --input: 40 12% 94%;
+    --ring: 25 95% 53%;
+    
+    /* Portfolio Specific Variables for Light Theme */
+    --nav-background: 40 10% 92%;           /* Soft cream navigation background */
+    --nav-hover: 25 95% 53%;                /* Orange hover state */
+    --hero-gradient-start: 25 95% 53%;      /* Orange gradient start */
+    --hero-gradient-end: 35 95% 58%;        /* Orange gradient end */
+    --glow-color: 25 95% 53%;               /* Glow effect color */
+  }
 }
 
 @layer base {
@@ -81,6 +119,12 @@
     @apply text-7xl md:text-8xl font-black tracking-tight text-foreground;
     text-shadow: 0 0 20px hsl(var(--glow-color) / 0.3), 
                  0 0 40px hsl(var(--glow-color) / 0.2);
+  }
+  
+  /* Light theme hero text adjustments */
+  .light .hero-text-simple {
+    color: hsl(220 20% 35%);
+    text-shadow: none;
   }
   
   .hero-subtitle {
