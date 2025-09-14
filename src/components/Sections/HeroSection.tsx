@@ -1,15 +1,25 @@
 import { useState, useEffect } from 'react';
+import { TypingAnimation } from '@/components/ui/typing-animation';
+import { ParticleBackground } from '@/components/ui/particle-background';
 
 export function HeroSection() {
   const scrollToNext = () => {
     const nextSection = document.getElementById('about');
     if (nextSection) {
-      nextSection.scrollIntoView({ behavior: 'smooth' });
+      const navbarHeight = 80; // Height of the navbar + some padding
+      const elementPosition = nextSection.offsetTop - navbarHeight;
+      
+      window.scrollTo({
+        top: elementPosition,
+        behavior: 'smooth'
+      });
     }
   };
 
   const [isHomeVisible, setIsHomeVisible] = useState(false);
   const [isAnimationComplete, setIsAnimationComplete] = useState(false);
+  const [showSubtitle, setShowSubtitle] = useState(false);
+  const [showArrow, setShowArrow] = useState(false);
 
   useEffect(() => {
     // Wait for the fade-in animation to complete (0.6s from CSS)
@@ -46,8 +56,9 @@ export function HeroSection() {
   }, []);
 
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center px-4 md:px-6 py-16 md:py-0">
-      <div className="max-w-6xl mx-auto w-full">
+    <section id="home" className="min-h-screen flex items-center justify-center px-4 md:px-6 py-16 md:py-0 relative overflow-hidden">
+      <ParticleBackground />
+      <div className="max-w-6xl mx-auto w-full relative z-10">
         <div className="animate-fade-in relative flex items-center justify-center min-h-[80vh] md:h-full">
           {/* Container for the name and positioning elements */}
           <div className="relative">
@@ -56,23 +67,38 @@ export function HeroSection() {
               Hi, I'm
             </p>
             
-            {/* Josh Cimanes centered */}
+            {/* Josh Cimanes centered with typing animation */}
             <h1 className="hero-text-simple text-center text-5xl md:text-7xl lg:text-8xl">
-              Josh Cimanes
+              <TypingAnimation 
+                text="Josh Cimanes" 
+                speed={150} 
+                delay={2000}
+                className="inline-block"
+                onComplete={() => {
+                  setShowSubtitle(true);
+                  // Show arrow after subtitle appears with a slight delay
+                  setTimeout(() => setShowArrow(true), 500);
+                }}
+              />
             </h1>
             
-            {/* Frontend Developer positioned bottom right of name */}
-            <p className="absolute -bottom-8 md:-bottom-12 -right-2 md:-right-8 text-xs md:text-sm lg:text-lg xl:text-xl text-muted-foreground font-medium tracking-wide">
+            {/* Frontend Developer positioned bottom right of name - only shows after typing completes */}
+            <p className={`absolute -bottom-8 md:-bottom-12 -right-2 md:-right-8 text-xs md:text-sm lg:text-lg xl:text-xl text-muted-foreground font-medium tracking-wide transition-opacity duration-1000 ${
+              showSubtitle ? 'opacity-100' : 'opacity-0'
+            }`}>
               Front-End Developer
             </p>
           </div>
           
           {/* Bouncing scroll arrow - only show when animation is complete and home is visible */}
-          {isAnimationComplete && isHomeVisible && (
-            <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 animate-bounce z-50">
+          {isAnimationComplete && isHomeVisible && showArrow && (
+            <div className={`fixed bottom-0 left-1/2 transform -translate-x-1/2 z-50 transition-all duration-1000 ease-out ${
+              showArrow ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            }`}>
               <button
                 onClick={scrollToNext}
                 className="text-muted-foreground hover:text-primary transition-colors duration-300"
+                style={{ animation: 'smoothFloat 4s ease-in-out infinite' }}
                 aria-label="Scroll to next section"
               >
                 <svg

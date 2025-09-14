@@ -14,40 +14,56 @@ export function StickyNavigation() {
   const [activeSection, setActiveSection] = useState('home');
 
   useEffect(() => {
+    let ticking = false;
+    
     const handleScroll = () => {
-      const sections = navigationItems.map(item => item.id);
-      let currentSection = null;
-      let minDistance = Infinity;
-      
-      sections.forEach(section => {
-        const element = document.getElementById(section);
-        if (element) {
-          const rect = element.getBoundingClientRect();
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          const sections = navigationItems.map(item => item.id);
+          let currentSection = null;
+          let minDistance = Infinity;
           const viewportCenter = window.innerHeight / 2;
-          const sectionCenter = rect.top + rect.height / 2;
-          const distance = Math.abs(sectionCenter - viewportCenter);
           
-          // Only consider sections that are at least partially visible
-          if (rect.top < window.innerHeight && rect.bottom > 0 && distance < minDistance) {
-            minDistance = distance;
-            currentSection = section;
+          sections.forEach(section => {
+            const element = document.getElementById(section);
+            if (element) {
+              const rect = element.getBoundingClientRect();
+              const sectionCenter = rect.top + (rect.height / 2);
+              const distanceFromCenter = Math.abs(sectionCenter - viewportCenter);
+              
+              // Only consider sections that are at least partially visible
+              if (rect.bottom > 0 && rect.top < window.innerHeight) {
+                if (distanceFromCenter < minDistance) {
+                  minDistance = distanceFromCenter;
+                  currentSection = section;
+                }
+              }
+            }
+          });
+          
+          if (currentSection) {
+            setActiveSection(currentSection);
           }
-        }
-      });
-      
-      if (currentSection) {
-        setActiveSection(currentSection);
+          ticking = false;
+        });
+        ticking = true;
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      const navbarHeight = 80; // Height of the sticky navbar + some padding
+      const elementPosition = element.offsetTop - navbarHeight;
+      
+      window.scrollTo({
+        top: elementPosition,
+        behavior: 'smooth'
+      });
     }
   };
 

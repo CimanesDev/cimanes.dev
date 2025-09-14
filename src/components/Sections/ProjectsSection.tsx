@@ -1,105 +1,118 @@
-import { ExternalLink, Github, Code2, Brain, ShoppingCart, Calendar, ChevronDown, ChevronUp, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ExternalLink, Code2, Brain, ShoppingCart, Calendar, ChevronLeft, ChevronRight, BookOpen, ArrowRight } from 'lucide-react';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { OptimizedImage } from '@/components/ui/optimized-image';
 import { ProjectCard } from '@/components/ProjectCard';
 import { useScrollAnimation } from '@/hooks/use-scroll-animation';
+import { useStaggeredAnimation } from '@/hooks/use-enhanced-scroll';
 
 export function ProjectsSection() {
   const [expandedProject, setExpandedProject] = useState<string | null>(null);
   const [currentPage, setCurrentPage] = useState(0);
   const projectsPerPage = 3;
+  const navigate = useNavigate();
   
   const { ref: featuredRef, isVisible: featuredVisible } = useScrollAnimation({ delay: 100 });
   const { ref: projectsRef, isVisible: projectsVisible } = useScrollAnimation({ delay: 200 });
+  const { ref: blogRef, isVisible: blogVisible } = useScrollAnimation({ delay: 300 });
+  
   const projects = [
     {
       title: "EDC atbp",
       description: "Developed a complete e-commerce solution with role-based dashboards for administrators and customers, featuring product management, secure transactions, and real-time inventory tracking to replicate a seamless online shopping experience.",
       tech: ["ReactJS", "TailwindCSS", "Firebase"],
-      icon: ShoppingCart,
       color: "text-green-400",
       bgColor: "bg-green-400/10",
       github: "https://github.com",
       demo: "https://edc-atbp.netlify.app",
       image: "/images/edc.png",
-      featured: true
+      featured: true,
+      date: "December 2024",
+      status: "completed"
     },
     {
       title: "KaagapAI",
       description: "Developed a website that helps people log in their symptoms and lets AI analyze, get a diagnosis, and recommend nearby clinics/hospitals.",
       tech: ["ReactJS", "TailwindCSS", "Gemini API", "Firebase"],
-      icon: Brain,
       color: "text-purple-400",
       bgColor: "bg-purple-400/10",
       github: "https://github.com",
       demo: "https://kaagap-ai.netlify.app",
-      image: "/images/kaagapai.png"
+      image: "/images/kaagapai.png",
+      date: "May 2025",
+      status: "completed"
     },
     {
       title: "SalbaBida",
       description: "Built the entire frontend of a real-time disaster response platform connecting victims (Biktima) with responders (Tutulong), delivering an intuitive and responsive user experience that streamlined emergency coordination.",
       tech: ["ReactJS", "Google Maps API", "Python Flask"],
-      icon: Calendar,
       color: "text-blue-400",
       bgColor: "bg-blue-400/10",
       github: "https://github.com",
       demo: "https://salbabida.vercel.app",
-      image: "/images/salbabida.png"
+      image: "/images/salbabida.png",
+      date: "February 2025",
+      status: "completed"
     },
     {
       title: "Quine-McCluskey Minimizer",
       description: "Developed a web application with an intuitive user interface that minimizes boolean functions using the Quine-McCluskey Method for our final machine problem, allowing users to efficiently simplify complex logical expressions.",
       tech: ["ReactJS"],
-      icon: Code2,
       color: "text-orange-400",
       bgColor: "bg-orange-400/10",
       github: "https://github.com",
       demo: "https://quinemccluskey-carocimanes.netlify.app",
-      image: "/images/quine.png"
+      image: "/images/quine.png",
+      date: "November 2024",
+      status: "completed"
     },
     {
       title: "HellWeekCoffee",
       description: "Developed a Restaurant POS system as a school requirement for our final machine problem. It manages transactions, item encoding, customizations, and sales tracking to streamline coffee shop operations.",
       tech: ["Java"],
-      icon: Code2,
       color: "text-yellow-400",
       bgColor: "bg-yellow-400/10",
       github: "https://github.com",
       demo: "https://demo.com",
-      image: "/images/placeholder.png"
+      image: "/images/placeholder.png",
+      date: "October 2024",
+      status: "completed"
     },
     {
       title: "Iskola",
       description: "Developed an AI-powered study assistant web app that helps students by summarizing uploaded notes, generating quizzes from the content, and providing a chatbot for concept clarification through Gemini API integration.",
       tech: ["ReactJS", "TailwindCSS", "Gemini API"],
-      icon: Brain,
       color: "text-blue-400",
       bgColor: "bg-blue-400/10",
       github: "https://github.com",
       demo: "https://demo.com",
-      image: "/images/placeholder.png"
+      image: "/images/placeholder.png",
+      date: "January 2025",
+      status: "in-progress"
     },
     {
       title: "BantAI",
       description: "Built a website that enables users to analyze their traffic tickets for potential errors using AI, submit appeals directly to administrators, and look up violations by license plate number.",
       tech: ["ReactJS", "TailwindCSS", "Gemini API", "Google Maps API", "Firebase"],
-      icon: Brain,
       color: "text-red-400",
       bgColor: "bg-red-400/10",
       github: "https://github.com",
       demo: "https://bantai.netlify.app",
-      image: "/images/bantai.png"
+      image: "/images/bantai.png",
+      date: "May 2025",
+      status: "completed"
     },
     {
       title: "Tetris Effect",
       description: "Developed a Tetris clone with dynamic music, background effects, and multithreading for smoother gameplay. It has a highscore system and a leaderboard, as well as a local multiplayer game mode.",
       tech: ["JavaFX"],
-      icon: Code2,
       color: "text-pink-400",
       bgColor: "bg-pink-400/10",
       github: "https://github.com",
       demo: "https://demo.com",
-      image: "/images/placeholder.png"
+      image: "/images/placeholder.png",
+      date: "September 2024",
+      status: "completed"
     },
     {
       title: "Jogoal",
@@ -110,9 +123,39 @@ export function ProjectsSection() {
       bgColor: "bg-indigo-400/10",
       github: "https://github.com",
       demo: "https://demo.com",
-      image: "/images/placeholder.png"
-    }     
+      image: "/images/placeholder.png",
+      date: "March 2025",
+      status: "planned"
+    }
   ];
+
+  // Recent blog posts
+  const recentPosts = [
+    {
+      title: "Is It Too Late to Join Hackathons? My First Hackathon Story",
+      excerpt: "For the longest time, I thought I was late to the game. Whenever I heard the word hackathon, I pictured students who had been coding since high school, already building apps and pitching startups while I was just proud to make a calculator app that actually worked.",
+      date: "2025-07-26",
+      readTime: "6 min read",
+      category: "Personal"
+    },
+    {
+      title: "My College Life",
+      excerpt: "When I think about my life as a student, it honestly feels like a story of two completely different worlds. The first one was my time in Chiang Kai Shek College, where I studied from nursery all the way to high school. The second one started the moment I stepped into UP.",
+      date: "2025-08-01",
+      readTime: "7 min read",
+      category: "Personal"
+    }
+  ];
+
+  const { ref: projectCardsRef, visibleItems: projectCardsVisible } = useStaggeredAnimation(projects.length, 150);
+
+  const handleViewAllBlogs = () => {
+    navigate('/blog');
+  };
+
+  const handleBlogPostClick = (postId: number) => {
+    navigate(`/blog/${postId}`);
+  };
 
   return (
     <section id="projects" className="section-container">
@@ -210,7 +253,10 @@ export function ProjectsSection() {
           }`}
         >
           {/* Projects Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+          <div 
+            ref={projectCardsRef}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
+          >
             {projects.slice(1).slice(currentPage * projectsPerPage, (currentPage + 1) * projectsPerPage).map((project, index) => {
               const isExpanded = expandedProject === project.title;
               
@@ -266,6 +312,70 @@ export function ProjectsSection() {
                 <ChevronRight size={18} />
               </button>
             </div>
+          </div>
+        </div>
+
+        {/* Blog Subsection */}
+        <div 
+          ref={blogRef}
+          className={`mt-8 pt-8 border-t border-border/50 transition-all duration-700 ${
+            blogVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+          }`}
+        >
+          <div className="text-left mb-8">
+            <div className="flex items-center gap-3 mb-4">
+              <BookOpen className="w-5 h-5 text-primary" />
+              <h3 className="text-xl md:text-2xl font-bold">Recent Blog Posts</h3>
+            </div>
+          </div>
+
+          {/* Blog Posts Preview */}
+          <div className="grid gap-4 md:grid-cols-2 mb-6">
+            {recentPosts.map((post, index) => (
+              <article 
+                key={index}
+                className="group bg-white/5 backdrop-blur-xl border border-white/10 rounded-lg p-4 hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/10 hover:scale-[1.02] shadow-lg"
+              >
+                <div className="flex items-center gap-2 text-xs text-muted-foreground mb-2">
+                  <span className="px-2 py-1 bg-primary/10 text-primary rounded-full text-xs font-medium">
+                    {post.category}
+                  </span>
+                  <span>•</span>
+                  <span>{new Date(post.date).toLocaleDateString()}</span>
+                </div>
+                
+                <h4 
+                  className="font-semibold text-base mb-2 group-hover:text-primary transition-colors cursor-pointer"
+                  onClick={() => handleBlogPostClick(index === 0 ? 1 : 2)} // ID 1 for hackathon, ID 2 for college life
+                >
+                  {post.title}
+                </h4>
+                
+                <p className="text-muted-foreground text-sm mb-3 line-clamp-2">
+                  {post.excerpt}
+                </p>
+                
+                <div className="flex items-center justify-between">
+                  <span className="text-xs text-muted-foreground">{post.readTime}</span>
+                  <ArrowRight 
+                    className="w-3 h-3 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all cursor-pointer"
+                    onClick={() => handleBlogPostClick(index === 0 ? 1 : 2)} // ID 1 for hackathon, ID 2 for college life
+                  />
+                </div>
+              </article>
+            ))}
+          </div>
+
+          {/* View All Button */}
+          <div className="text-center">
+            <button
+              onClick={handleViewAllBlogs}
+              className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 backdrop-blur-xl border border-white/10 text-primary rounded-lg hover:bg-white/10 hover:border-primary/50 transition-all duration-300 font-medium text-sm hover:scale-105"
+            >
+              <BookOpen className="w-4 h-4" />
+              View All Posts
+              <ArrowRight className="w-4 h-4" />
+            </button>
           </div>
         </div>
 
