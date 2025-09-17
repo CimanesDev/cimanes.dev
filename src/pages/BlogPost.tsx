@@ -108,6 +108,49 @@ I don't know yet what will happen, but one thing I know for sure: I owe it to my
     category: "Personal",
     tags: ["College", "UP", "Personal Story", "Academic Journey", "Growth"],
     featured: false
+  },
+  {
+    id: 3,
+    title: "I Butchered My First Coding Interview",
+    excerpt: "For months I’d been sending out applications—internships, junior roles, anything for real-world experience. Then a CEO messaged me about a full developer position with an AI-analyzed technical interview—and I froze under pressure.",
+    content: `For months I’d been sending out applications—internships, junior dev roles, anything that could give me real-world experience. A few companies replied, and I even got interviews with names like Coca-Cola and Angkas.
+
+At first, I felt confident. Most questions were about me, my resume, or my experience. Sometimes, they even pulled directly from my resume. “I see you joined a 24-hour hackathon—how did you handle the time pressure?” or “How did you collaborate with your team?” I could answer those now almost in my sleep. I’d talk about Blue Hacks 2025, how we split tasks, rotated shifts, and pushed through exhaustion to finish our project. Those stories were real, and I knew them inside out.
+
+Then one day, a message popped up on LinkedIn. It was from a CEO, saying I was a perfect fit for a software engineering role.
+
+Not an internship.
+Not entry-level.
+A full developer position—at a New York company, with a salary that made my jaw drop.
+
+I applied immediately. They replied almost instantly and scheduled a technical interview.
+
+Only this time, it wasn’t a Zoom call. The email said it would be AI-analyzed, with no human interviewer. My stomach twisted. When I clicked the link, it asked for screen recording, camera access, and microphone recording, warning that copying or pasting might be detected. And then the line that made my heart stop: two coding challenges.
+
+I quickly refreshed some React basics—useState, counters, reversing a string—thinking maybe that would be enough. I clicked Start.
+
+The first challenge wasn’t impossible, but the pressure hit me like a ton of bricks. My hands shook, my mind raced, and the timer in the corner felt deafening. I stared at the problem for what felt like forever. Nothing came to me at first. I opened Google, scrambled through tabs, even asked AI for a quick jumpstart—just enough to see the flow and understand the steps I needed to take. I don’t even know if that was allowed, and my screen was being recorded the whole time, but I didn’t care anymore. Slowly, piece by piece, I managed to cobble together a messy solution. It worked. Barely. But it gave me a tiny spark of hope. Maybe I could survive this.
+
+Then came the second question. At first glance, it looked like something I should be able to do: fetch data from an API, display it, implement pagination, caching… but for me, it didn’t feel simple at all. The moment I stared at the screen, my brain completely blanked. Even the steps I vaguely knew—fetching, displaying, pagination—vanished. I couldn’t remember how to start, and the caching part felt like a mountain I didn’t know how to climb. My hands hovered over the keyboard, frozen. Heart racing. Every second on that timer made the panic worse.
+
+After a few minutes of staring, I somehow managed to do something. I fetched the data, displayed it, and set up pagination—but it didn’t fully work, and it wasn’t even truly mine. Every line was AI-assisted, guided by prompts and suggestions. I had technically written “something,” but the realization that none of it felt like my work stung worse than the timer ticking down.
+
+Twenty minutes slipped by. I kept twisting AI suggestions into code, trying to make it my own, but the clock was relentless. And then, before I could even finish a single functional line for caching, time was up.
+
+By that point, I didn’t even care that my screen was being recorded. Embarrassment, panic, frustration—it all washed over me. I had stared failure right in the face, and I hadn’t survived.
+
+Sitting back afterward, I felt a mix of shame and disbelief. I immediately told my friends, my girlfriend, my family—half venting, half needing someone to tell me it wasn’t the end of the world. I wanted to hide, to erase my face from every employer I had applied to.
+
+But after the panic faded, I realized something. This was my first real technical interview. And even though I failed spectacularly, I learned more than any easy, controlled practice session ever could. I now know what a high-pressure, AI-analyzed interview feels like. I know my gaps, the moments where my confidence can evaporate, and the skills I need to actually internalize.
+
+It didn’t end with an offer. But it gave me something better: perspective. I’m still a student, still learning, still growing. The next time I face an interview, I’ll be ready—not just with technical knowledge, but with the experience of surviving panic and pressure.
+
+One failed interview isn’t the end—it’s just the beginning.`,
+    date: "2025-09-16",
+    readTime: "6 min read",
+    category: "Career",
+    tags: ["Career", "Personal Story", "Growth"],
+    featured: false
   }
 ];
 
@@ -167,25 +210,25 @@ export default function BlogPost() {
     return content.split('\n').map((line, index) => {
        if (line.startsWith('## ')) {
          return (
-           <h2 key={index} className="text-xl font-bold mt-8 mb-4 text-foreground">
+           <h2 key={index} className="text-lg sm:text-xl font-bold mt-6 sm:mt-8 mb-3 sm:mb-4 text-foreground">
              {line.replace('## ', '')}
            </h2>
          );
        }
        if (line.startsWith('**') && line.endsWith('**')) {
          return (
-           <div key={index} className="my-6 text-center">
-             <p className="text-lg font-semibold text-primary italic">
+           <div key={index} className="my-4 sm:my-6 text-center px-2">
+             <p className="text-base sm:text-lg font-semibold text-primary italic">
                "{line.replace(/\*\*/g, '')}"
              </p>
            </div>
          );
        }
       if (line.trim() === '') {
-        return <div key={index} className="h-6" />;
+        return <div key={index} className="h-4 sm:h-6" />;
       }
        return (
-         <p key={index} className="text-foreground/90 leading-relaxed mb-4 text-base">
+         <p key={index} className="text-foreground/90 leading-relaxed mb-3 sm:mb-4 text-sm sm:text-base px-2">
            {line}
          </p>
        );
@@ -197,7 +240,7 @@ export default function BlogPost() {
       {/* Header */}
       <section 
         ref={headerRef}
-        className={`py-4 px-4 md:px-6 mt-8 transition-all duration-700 ${
+        className={`py-4 px-4 sm:px-6 lg:px-8 mt-4 sm:mt-8 transition-all duration-700 ${
           headerVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}
       >
@@ -205,23 +248,23 @@ export default function BlogPost() {
           <div className="flex items-center justify-between">
              <button
                onClick={handleBackToBlog}
-               className="text-muted-foreground hover:text-primary transition-colors duration-300"
+               className="text-muted-foreground hover:text-primary transition-colors duration-300 p-1"
              >
-               <ArrowLeft className="w-5 h-5" />
+               <ArrowLeft className="w-5 h-5 sm:w-6 sm:h-6" />
              </button>
             
             <button
               onClick={handleShare}
-              className="text-muted-foreground hover:text-primary transition-colors duration-300"
+              className="text-muted-foreground hover:text-primary transition-colors duration-300 p-1"
             >
-              <Share2 className="w-5 h-5" />
+              <Share2 className="w-5 h-5 sm:w-6 sm:h-6" />
             </button>
           </div>
         </div>
       </section>
 
        {/* Main Content */}
-       <main className="px-4 md:px-6 mt-4">
+       <main className="px-4 sm:px-6 lg:px-8 mt-4 sm:mt-6">
          <div className="max-w-6xl mx-auto w-full">
           <article 
             ref={contentRef}
@@ -230,33 +273,35 @@ export default function BlogPost() {
             }`}
           >
             {/* Post Header */}
-            <header className="mb-12">
-              <div className="text-center mb-8">
-                <div className="flex items-center justify-center gap-4 text-sm text-muted-foreground mb-6">
-                  <span className="px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium">
+            <header className="mb-8 sm:mb-12">
+              <div className="text-center mb-6 sm:mb-8">
+                <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-4 text-xs sm:text-sm text-muted-foreground mb-4 sm:mb-6">
+                  <span className="px-3 sm:px-4 py-1 sm:py-2 bg-primary/10 text-primary rounded-full text-xs sm:text-sm font-medium">
                     {post.category}
                   </span>
-                  <div className="flex items-center gap-2">
-                    <Calendar className="w-4 h-4" />
-                    <span>{new Date(post.date).toLocaleDateString('en-US', { 
+                  <span className="hidden sm:inline">•</span>
+                  <div className="flex items-center gap-1 sm:gap-2">
+                    <Calendar className="w-3 h-3 sm:w-4 sm:h-4" />
+                    <span className="text-xs sm:text-sm">{new Date(post.date).toLocaleDateString('en-US', { 
                       year: 'numeric', 
                       month: 'long', 
                       day: 'numeric' 
                     })}</span>
                   </div>
-                  <div className="flex items-center gap-2">
-                    <Clock className="w-4 h-4" />
-                    <span>{post.readTime}</span>
+                  <span className="hidden sm:inline">•</span>
+                  <div className="flex items-center gap-1 sm:gap-2">
+                    <Clock className="w-3 h-3 sm:w-4 sm:h-4" />
+                    <span className="text-xs sm:text-sm">{post.readTime}</span>
                   </div>
                 </div>
                 
-                 <h1 className="text-2xl md:text-3xl font-bold mb-6 leading-tight text-foreground">
+                 <h1 className="text-xl sm:text-2xl md:text-3xl font-bold mb-4 sm:mb-6 leading-tight text-foreground px-2">
                    {post.title}
                  </h1>
                 
-                <div className="flex flex-wrap justify-center gap-3 mb-8">
+                <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-6 sm:mb-8 px-2">
                   {post.tags.map(tag => (
-                    <span key={tag} className="flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10 text-muted-foreground rounded-full text-sm hover:bg-white/10 hover:border-primary/30 transition-all duration-300 cursor-default">
+                    <span key={tag} className="flex items-center gap-1 sm:gap-2 px-3 sm:px-4 py-1 sm:py-2 bg-white/5 border border-white/10 text-muted-foreground rounded-full text-xs sm:text-sm hover:bg-white/10 hover:border-primary/30 transition-all duration-300 cursor-default">
                       <Tag className="w-3 h-3" />
                       {tag}
                     </span>
@@ -266,8 +311,8 @@ export default function BlogPost() {
             </header>
 
              {/* Post Content */}
-             <div className="prose max-w-none mb-8">
-               <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-lg p-6 shadow-lg">
+             <div className="prose max-w-none mb-6 sm:mb-8">
+               <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-lg p-4 sm:p-6 shadow-lg">
                  <div className="max-w-5xl mx-auto">
                    {formatContent(post.content)}
                  </div>
@@ -275,23 +320,23 @@ export default function BlogPost() {
              </div>
 
             {/* Post Footer */}
-            <footer className="pt-12 border-t border-border/30">
-              <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+            <footer className="pt-8 sm:pt-12 border-t border-border/30">
+              <div className="flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6">
                 <button
                   onClick={handleBackToBlog}
-                  className="flex items-center gap-3 px-6 py-3 bg-white/5 border border-white/10 rounded-xl text-primary hover:text-primary/80 hover:bg-white/10 hover:border-primary/30 transition-all duration-300 font-medium hover:scale-105"
+                  className="flex items-center gap-2 sm:gap-3 px-4 sm:px-6 py-2 sm:py-3 bg-white/5 border border-white/10 rounded-xl text-primary hover:text-primary/80 hover:bg-white/10 hover:border-primary/30 transition-all duration-300 font-medium hover:scale-105 text-sm sm:text-base w-full sm:w-auto justify-center"
                 >
-                  <ArrowLeft className="w-5 h-5" />
+                  <ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5" />
                   Back to Blog
                 </button>
                 
-                <div className="flex items-center gap-6">
-                  <span className="text-sm text-muted-foreground font-medium">Share this post:</span>
+                <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-6 w-full sm:w-auto">
+                  <span className="text-xs sm:text-sm text-muted-foreground font-medium">Share this post:</span>
                   <button
                     onClick={handleShare}
-                    className="flex items-center gap-3 px-6 py-3 bg-white/5 border border-white/10 rounded-xl text-muted-foreground hover:text-primary hover:bg-white/10 hover:border-primary/30 transition-all duration-300 hover:scale-105"
+                    className="flex items-center gap-2 sm:gap-3 px-4 sm:px-6 py-2 sm:py-3 bg-white/5 border border-white/10 rounded-xl text-muted-foreground hover:text-primary hover:bg-white/10 hover:border-primary/30 transition-all duration-300 hover:scale-105 text-sm sm:text-base w-full sm:w-auto justify-center"
                   >
-                    <Share2 className="w-5 h-5" />
+                    <Share2 className="w-4 h-4 sm:w-5 sm:h-5" />
                     Share
                   </button>
                 </div>
@@ -302,9 +347,9 @@ export default function BlogPost() {
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-border/50 py-8 mt-16">
-        <div className="max-w-4xl mx-auto px-4 md:px-6 text-center">
-          <p className="text-muted-foreground">
+      <footer className="border-t border-border/50 py-6 sm:py-8 mt-12 sm:mt-16">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <p className="text-muted-foreground text-sm sm:text-base">
             © 2025 Josh Cimanes. All rights reserved.
           </p>
         </div>
