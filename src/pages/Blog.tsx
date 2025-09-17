@@ -123,6 +123,49 @@ I don't know yet what will happen, but one thing I know for sure: I owe it to my
       category: "Personal",
       tags: ["College", "UP", "Personal Story", "Academic Journey", "Growth"],
       featured: false
+    },
+    {
+      id: 3,
+      title: "I Butchered My First Coding Interview",
+      excerpt: "For months I’d been sending out applications—internships, junior roles, anything for real-world experience. Then a CEO messaged me about a full developer position with an AI-analyzed technical interview—and I froze under pressure.",
+      content: `For months I’d been sending out applications—internships, junior dev roles, anything that could give me real-world experience. A few companies replied, and I even got interviews with names like Coca-Cola and Angkas.
+
+At first, I felt confident. Most questions were about me, my resume, or my experience. Sometimes, they even pulled directly from my resume. “I see you joined a 24-hour hackathon—how did you handle the time pressure?” or “How did you collaborate with your team?” I could answer those now almost in my sleep. I’d talk about Blue Hacks 2025, how we split tasks, rotated shifts, and pushed through exhaustion to finish our project. Those stories were real, and I knew them inside out.
+
+Then one day, a message popped up on LinkedIn. It was from a CEO, saying I was a perfect fit for a software engineering role.
+
+Not an internship.
+Not entry-level.
+A full developer position—at a New York company, with a salary that made my jaw drop.
+
+I applied immediately. They replied almost instantly and scheduled a technical interview.
+
+Only this time, it wasn’t a Zoom call. The email said it would be AI-analyzed, with no human interviewer. My stomach twisted. When I clicked the link, it asked for screen recording, camera access, and microphone recording, warning that copying or pasting might be detected. And then the line that made my heart stop: two coding challenges.
+
+I quickly refreshed some React basics—useState, counters, reversing a string—thinking maybe that would be enough. I clicked Start.
+
+The first challenge wasn’t impossible, but the pressure hit me like a ton of bricks. My hands shook, my mind raced, and the timer in the corner felt deafening. I stared at the problem for what felt like forever. Nothing came to me at first. I opened Google, scrambled through tabs, even asked AI for a quick jumpstart—just enough to see the flow and understand the steps I needed to take. I don’t even know if that was allowed, and my screen was being recorded the whole time, but I didn’t care anymore. Slowly, piece by piece, I managed to cobble together a messy solution. It worked. Barely. But it gave me a tiny spark of hope. Maybe I could survive this.
+
+Then came the second question. At first glance, it looked like something I should be able to do: fetch data from an API, display it, implement pagination, caching… but for me, it didn’t feel simple at all. The moment I stared at the screen, my brain completely blanked. Even the steps I vaguely knew—fetching, displaying, pagination—vanished. I couldn’t remember how to start, and the caching part felt like a mountain I didn’t know how to climb. My hands hovered over the keyboard, frozen. Heart racing. Every second on that timer made the panic worse.
+
+After a few minutes of staring, I somehow managed to do something. I fetched the data, displayed it, and set up pagination—but it didn’t fully work, and it wasn’t even truly mine. Every line was AI-assisted, guided by prompts and suggestions. I had technically written “something,” but the realization that none of it felt like my work stung worse than the timer ticking down.
+
+Twenty minutes slipped by. I kept twisting AI suggestions into code, trying to make it my own, but the clock was relentless. And then, before I could even finish a single functional line for caching, time was up.
+
+By that point, I didn’t even care that my screen was being recorded. Embarrassment, panic, frustration—it all washed over me. I had stared failure right in the face, and I hadn’t survived.
+
+Sitting back afterward, I felt a mix of shame and disbelief. I immediately told my friends, my girlfriend, my family—half venting, half needing someone to tell me it wasn’t the end of the world. I wanted to hide, to erase my face from every employer I had applied to.
+
+But after the panic faded, I realized something. This was my first real technical interview. And even though I failed spectacularly, I learned more than any easy, controlled practice session ever could. I now know what a high-pressure, AI-analyzed interview feels like. I know my gaps, the moments where my confidence can evaporate, and the skills I need to actually internalize.
+
+It didn’t end with an offer. But it gave me something better: perspective. I’m still a student, still learning, still growing. The next time I face an interview, I’ll be ready—not just with technical knowledge, but with the experience of surviving panic and pressure.
+
+One failed interview isn’t the end—it’s just the beginning.`,
+      date: "2025-09-16",
+      readTime: "6 min read",
+      category: "Career",
+      tags: ["Career", "Personal Story", "Growth"],
+      featured: false
     }
   ];
 
@@ -154,32 +197,32 @@ I don't know yet what will happen, but one thing I know for sure: I owe it to my
       {/* Header */}
       <section 
         ref={headerRef}
-        className={`py-4 px-4 md:px-6 mt-8 transition-all duration-700 ${
+        className={`py-4 px-4 sm:px-6 lg:px-8 mt-4 sm:mt-8 transition-all duration-700 ${
           headerVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}
       >
         <div className="max-w-6xl mx-auto w-full">
-          <div className="flex items-center justify-between mb-8">
+          <div className="flex items-center justify-between mb-6 sm:mb-8">
             <button
               onClick={handleBackToPortfolio}
-              className="text-muted-foreground hover:text-primary transition-colors duration-300"
+              className="text-muted-foreground hover:text-primary transition-colors duration-300 p-1"
             >
-              <ArrowLeft className="w-5 h-5" />
+              <ArrowLeft className="w-5 h-5 sm:w-6 sm:h-6" />
             </button>
             
-            <h1 className="text-2xl md:text-3xl font-bold">Blog</h1>
+            <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-center flex-1">Blog</h1>
             
-            <div className="w-5"></div>
+            <div className="w-5 sm:w-6"></div>
           </div>
           
           {/* Search and Filter */}
           <div 
             ref={searchRef}
-            className={`mb-4 transition-all duration-700 ${
+            className={`mb-6 sm:mb-8 transition-all duration-700 ${
               searchVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}
           >
-            <div className="flex flex-col md:flex-row gap-3 mb-2">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-3">
               <div className="relative flex-1">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-muted-foreground" />
                 <input
@@ -187,16 +230,16 @@ I don't know yet what will happen, but one thing I know for sure: I owe it to my
                   placeholder="Search posts..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full pl-10 pr-4 py-2 bg-white/5 backdrop-blur-xl border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-300 hover:bg-white/10 text-foreground"
+                  className="w-full pl-10 pr-4 py-3 sm:py-2 bg-white/5 backdrop-blur-xl border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-300 hover:bg-white/10 text-foreground text-sm sm:text-base"
                 />
               </div>
               
-              <div className="relative">
+              <div className="relative w-full sm:w-auto">
                 <Filter className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-muted-foreground" />
                 <select
                   value={selectedCategory}
                   onChange={(e) => setSelectedCategory(e.target.value)}
-                  className="pl-10 pr-8 py-2 bg-white/5 backdrop-blur-xl border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-300 hover:bg-white/10 appearance-none cursor-pointer min-w-[150px] text-foreground"
+                  className="w-full sm:min-w-[150px] pl-10 pr-8 py-3 sm:py-2 bg-white/5 backdrop-blur-xl border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-300 hover:bg-white/10 appearance-none cursor-pointer text-foreground text-sm sm:text-base"
                 >
                   {categories.map(category => (
                     <option key={category} value={category} className="bg-background text-foreground">{category}</option>
@@ -205,7 +248,7 @@ I don't know yet what will happen, but one thing I know for sure: I owe it to my
               </div>
             </div>
             
-            <p className="text-muted-foreground text-xs">
+            <p className="text-muted-foreground text-xs sm:text-sm">
               {filteredPosts.length} post{filteredPosts.length !== 1 ? 's' : ''} found
             </p>
           </div>
@@ -213,46 +256,46 @@ I don't know yet what will happen, but one thing I know for sure: I owe it to my
       </section>
 
       {/* Main Content */}
-      <main className="px-4 md:px-6 mt-4">
+      <main className="px-4 sm:px-6 lg:px-8 mt-4 sm:mt-6">
         <div className="max-w-6xl mx-auto w-full">
 
           {/* Featured Post */}
           {featuredPost && (selectedCategory === 'All' || featuredPost.category === selectedCategory) && (
             <div 
               ref={featuredRef}
-              className={`mb-8 transition-all duration-700 ${
+              className={`mb-8 sm:mb-12 transition-all duration-700 ${
                 featuredVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
               }`}
             >
               <article 
-                className="group bg-white/5 backdrop-blur-xl border border-white/10 rounded-lg p-6 hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/10 cursor-pointer shadow-lg"
+                className="group bg-white/5 backdrop-blur-xl border border-white/10 rounded-lg p-4 sm:p-6 hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/10 cursor-pointer shadow-lg"
                 onClick={() => handlePostClick(featuredPost.id)}
               >
-                <div className="flex items-center gap-2 text-sm text-muted-foreground mb-4">
+                <div className="flex flex-wrap items-center gap-2 text-xs sm:text-sm text-muted-foreground mb-4">
                   <span className="px-2 py-1 bg-primary/10 text-primary rounded-full text-xs font-medium">
                     {featuredPost.category}
                   </span>
-                  <span>•</span>
+                  <span className="hidden sm:inline">•</span>
                   <div className="flex items-center gap-1">
                     <Calendar className="w-3 h-3" />
-                    <span>{new Date(featuredPost.date).toLocaleDateString()}</span>
+                    <span className="text-xs sm:text-sm">{new Date(featuredPost.date).toLocaleDateString()}</span>
                   </div>
-                  <span>•</span>
+                  <span className="hidden sm:inline">•</span>
                   <div className="flex items-center gap-1">
                     <Clock className="w-3 h-3" />
-                    <span>{featuredPost.readTime}</span>
+                    <span className="text-xs sm:text-sm">{featuredPost.readTime}</span>
                   </div>
                 </div>
                 
-                <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors">
+                <h3 className="text-lg sm:text-xl font-bold mb-3 group-hover:text-primary transition-colors leading-tight">
                   {featuredPost.title}
                 </h3>
                 
-                <p className="text-muted-foreground mb-4 text-sm leading-relaxed">
+                <p className="text-muted-foreground mb-4 text-sm sm:text-base leading-relaxed">
                   {featuredPost.excerpt}
                 </p>
                 
-                <div className="flex items-center justify-between">
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
                   <div className="flex flex-wrap gap-2">
                     {featuredPost.tags.map(tag => (
                       <span key={tag} className="flex items-center gap-1 px-2 py-1 bg-white/10 text-muted-foreground rounded-md text-xs">
@@ -261,7 +304,7 @@ I don't know yet what will happen, but one thing I know for sure: I owe it to my
                       </span>
                     ))}
                   </div>
-                  <button className="text-primary hover:text-primary/80 font-medium text-sm transition-colors">
+                  <button className="text-primary hover:text-primary/80 font-medium text-sm transition-colors self-start sm:self-auto">
                     Read More →
                   </button>
                 </div>
@@ -278,42 +321,42 @@ I don't know yet what will happen, but one thing I know for sure: I owe it to my
           >
             <div 
               ref={postsGridRef}
-              className="grid gap-6 md:grid-cols-2 lg:grid-cols-3"
+              className="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
             >
               {regularPosts.map((post, index) => (
                 <article 
                   key={post.id}
-                  className={`group bg-white/5 backdrop-blur-xl border border-white/10 rounded-lg p-6 hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/10 cursor-pointer shadow-lg ${
+                  className={`group bg-white/5 backdrop-blur-xl border border-white/10 rounded-lg p-4 sm:p-6 hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/10 cursor-pointer shadow-lg ${
                     postsGridVisible[index] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                   }`}
                   style={{ transitionDelay: `${index * 100}ms` }}
                   onClick={() => handlePostClick(post.id)}
                 >
-                  <div className="flex items-center gap-2 text-sm text-muted-foreground mb-3">
+                  <div className="flex flex-wrap items-center gap-2 text-xs sm:text-sm text-muted-foreground mb-3">
                     <span className="px-2 py-1 bg-primary/10 text-primary rounded-full text-xs font-medium">
                       {post.category}
                     </span>
-                    <span>•</span>
+                    <span className="hidden sm:inline">•</span>
                     <div className="flex items-center gap-1">
                       <Calendar className="w-3 h-3" />
-                      <span>{new Date(post.date).toLocaleDateString()}</span>
+                      <span className="text-xs sm:text-sm">{new Date(post.date).toLocaleDateString()}</span>
                     </div>
                   </div>
                   
-                  <h3 className="font-semibold text-lg mb-2 group-hover:text-primary transition-colors">
+                  <h3 className="font-semibold text-base sm:text-lg mb-2 group-hover:text-primary transition-colors leading-tight">
                     {post.title}
                   </h3>
                   
-                  <p className="text-muted-foreground text-sm mb-4 line-clamp-3">
+                  <p className="text-muted-foreground text-sm sm:text-base mb-4 line-clamp-3 leading-relaxed">
                     {post.excerpt}
                   </p>
                   
-                  <div className="flex items-center justify-between">
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
                     <div className="flex items-center gap-1 text-xs text-muted-foreground">
                       <Clock className="w-3 h-3" />
                       <span>{post.readTime}</span>
                     </div>
-                    <button className="text-primary hover:text-primary/80 font-medium text-sm transition-colors">
+                    <button className="text-primary hover:text-primary/80 font-medium text-sm transition-colors self-start sm:self-auto">
                       Read More →
                     </button>
                   </div>
@@ -324,14 +367,14 @@ I don't know yet what will happen, but one thing I know for sure: I owe it to my
 
           {/* No Results */}
           {filteredPosts.length === 0 && (
-            <div className="text-center py-12">
-              <p className="text-muted-foreground text-lg mb-4">No posts found matching your criteria.</p>
+            <div className="text-center py-8 sm:py-12">
+              <p className="text-muted-foreground text-base sm:text-lg mb-4 px-4">No posts found matching your criteria.</p>
               <button
                 onClick={() => {
                   setSearchTerm('');
                   setSelectedCategory('All');
                 }}
-                className="text-primary hover:text-primary/80 font-medium transition-colors"
+                className="text-primary hover:text-primary/80 font-medium transition-colors px-4 py-2 rounded-lg hover:bg-white/5"
               >
                 Clear filters
               </button>
@@ -341,9 +384,9 @@ I don't know yet what will happen, but one thing I know for sure: I owe it to my
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-border py-8 mt-16">
-        <div className="max-w-6xl mx-auto px-4 md:px-6 text-center">
-          <p className="text-muted-foreground">
+      <footer className="border-t border-border py-6 sm:py-8 mt-12 sm:mt-16">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <p className="text-muted-foreground text-sm sm:text-base">
             © 2025 Josh Cimanes. All rights reserved.
           </p>
         </div>
