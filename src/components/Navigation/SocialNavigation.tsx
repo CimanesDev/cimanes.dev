@@ -1,10 +1,11 @@
-import { Github, Linkedin, Download, BookOpen, Sun, Moon } from 'lucide-react';
+import { Github, Linkedin, Download, BookOpen, Sun, Moon, Camera } from 'lucide-react';
 import { useTheme } from '@/contexts/ThemeContext';
 
 const socialLinks = [
   { icon: Github, href: 'https://github.com/cimanesdev', label: 'GitHub' },
   { icon: Linkedin, href: 'https://linkedin.com/in/cimanesdev', label: 'LinkedIn' },
   { icon: BookOpen, href: '/blog', label: 'Blog', blog: true },
+  { icon: Camera, href: '/gallery', label: 'Gallery', gallery: true },
   { icon: Download, href: '/Josh Bradley Cimanes CV.pdf', label: 'Download CV', download: true },
 ];
 
@@ -15,7 +16,7 @@ export function SocialNavigation() {
     <nav className="fixed right-8 top-1/2 -translate-y-1/2 z-50 hidden lg:block">
       <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-full p-5 shadow-2xl" style={{ boxShadow: '0 0 0 1px hsl(var(--border)), 0 0 10px hsl(var(--glow-color) / 0.2), 0 0 20px hsl(var(--glow-color) / 0.1)' }}>
         <div className="flex flex-col items-center gap-5">
-          {socialLinks.map(({ icon: Icon, href, label, download, blog }) => (
+          {socialLinks.map(({ icon: Icon, href, label, download, blog, gallery }) => (
             <a
               key={label}
               href={href}
@@ -35,6 +36,11 @@ export function SocialNavigation() {
               {blog && (
                 <div className="absolute right-full mr-2 px-2 py-1 bg-background/90 backdrop-blur-sm border border-border rounded-md text-xs whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-50">
                   Read my Blogs
+                </div>
+              )}
+              {gallery && (
+                <div className="absolute right-full mr-2 px-2 py-1 bg-background/90 backdrop-blur-sm border border-border rounded-md text-xs whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-50">
+                  View Gallery
                 </div>
               )}
             </a>
@@ -62,7 +68,7 @@ export function MobileSocialNavigation() {
     <nav className="fixed top-4 right-4 z-50 lg:hidden">
       <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-full px-2 py-2 shadow-2xl" style={{ boxShadow: '0 0 0 1px hsl(var(--border)), 0 0 10px hsl(var(--glow-color) / 0.2), 0 0 20px hsl(var(--glow-color) / 0.1)' }}>
         <div className="flex items-center gap-1.5">
-          {socialLinks.map(({ icon: Icon, href, label, download, blog }) => (
+          {socialLinks.map(({ icon: Icon, href, label, download, blog, gallery }) => (
             <a
               key={label}
               href={href}
