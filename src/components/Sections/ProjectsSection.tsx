@@ -129,6 +129,7 @@ export function ProjectsSection() {
     }
   ];
 
+
   // Recent blog posts
   const recentPosts = [
     {

@@ -47,10 +47,12 @@ export const ProjectCard = memo(({ project, index, isExpanded, onToggle }: Proje
         <div className="mb-4 bg-gradient-to-br from-white/10 to-white/5 rounded-lg h-32 flex items-center justify-center">
           <div className="text-center">
             <div className="w-12 h-12 bg-white/20 rounded-xl mx-auto mb-2 flex items-center justify-center">
-              {(() => {
+              {project.icon ? (() => {
                 const Icon = project.icon;
                 return <Icon className="text-white/60" size={24} />;
-              })()}
+              })() : (
+                <div className="w-6 h-6 bg-white/30 rounded"></div>
+              )}
             </div>
             <p className="text-xs text-white/60">No preview available</p>
           </div>
